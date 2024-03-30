@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
-import apple from "../Images/Footer/AppStore.svg";
-import google from "../Images/Footer/GooglePlay.webp";
-import facebook from "../Images/Footer/Facebook.svg";
-import twitter from "../Images/Footer/Twitter.svg";
-import instagram from "../Images/Footer/Instagramme.svg";
+import apple from "./Images/AppStore.svg";
+import google from "./Images/GooglePlay.webp";
+import facebook from "./Images/Facebook.svg";
+import twitter from "./Images/Twitter.svg";
+import instagram from "./Images/Instagram.svg";
 import "./Footer.css";
 import WhiteLogo from "../Logos/WhiteLogo";
 

@@ -10,12 +10,12 @@
 
 .backgroundLeft {
     left: 0;
-    background-image: url('../Images/img_background_left_food.svg');
+    background-image: url('img_background_left_food.svg');
     background-position: right;
 }
 
 .backgroundRight {
     right: 0;
-    background-image: url('../Images/img_background_right_food.svg');
+    background-image: url('img_background_right_food.svg');
     background-position: left;
 }

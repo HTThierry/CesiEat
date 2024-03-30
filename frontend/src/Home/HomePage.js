@@ -22,7 +22,13 @@ function MainContent() {
                 <div className="backgroundLeft"></div>
                 <div className="backgroundRight"></div>
             </div>
-            <Footer/>
+            <div style={{
+                position: 'fixed',
+                bottom: '0',
+                width: '100%'}}>
+                <Footer/>
+            </div>
+
         </main>
     );
 }

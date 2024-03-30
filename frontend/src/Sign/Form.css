@@ -1,24 +1,43 @@
 @import url('../Fonts/Fonts.css');
 @import url('../BackgroundImages/BackgroundImages.css');
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 .logging {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* For Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
     .container {
+        flex: 1 1 auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
         margin: 0 auto;
+        height: calc(100vh - 60px);
         text-align: center;
         font-size: 25px;
         max-width: 600px;
     }
 
-    .inputContainer {
-        margin: 10px 0;
-    }
-
     .input {
+        margin: 10px 0;
         padding: 15px 12px;
         border-radius: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -31,6 +50,7 @@
         border: none;
         color: #222;
     }
+
 
     .button {
         margin: 40px 0;
@@ -52,6 +72,8 @@
         margin-top: 5px;
     }
 
+
+
     @media screen and (max-width: 767px) {
 
         body {
@@ -71,6 +93,16 @@
             height: 65px;
         }
 
+        .inputRow {
+            width: 90%;
+            min-width: 350px;
+            flex-direction: column;
+        }
+
+        .halfInput {
+            width: 100%;
+        }
+
         .button {
             font-size: 16px;
             min-width: 350px;
@@ -81,6 +113,5 @@
         .header {
             height: 50px;
         }
-
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './WhiteLogo.css';
-import logo from "../Images/logo_white_cesieats.webp";
+import logo from "./logo_white_cesieats.webp";
 import {Link} from "react-router-dom";
 
 const WhiteLogo = ({children}) => {

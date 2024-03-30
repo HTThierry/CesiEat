@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
-import logo from "../Images/logo_white_cesieats.webp";
-import Blackheader from "../Headers/Blackheader";
-import WhiteLogo from "../Logos/WhiteLogo";
+import BlackHeader from "../Headers/BlackHeader";
+import {useLocation, useNavigate} from 'react-router-dom';
+
+
 const PasswordForm = ({ onLogin }) => {
-
-
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
+    const navigate = useNavigate()
+    const location = useLocation();
+    const { accountType, referralCode, email, phone } = location.state || {};
+
     const validatePassword = (password) => {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\]\[;'-])[A-Za-z\d@$!%*?&\]\[;'-]{8,16}$/;
         return regex.test(password);
     };
 
@@ -27,7 +30,8 @@ const PasswordForm = ({ onLogin }) => {
             setErrorMessage('Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.');
             return;
         }
-        console.log('Password data:', e);
+
+        navigate('/information', { state: { accountType, referralCode, email, phone, password} });
     };
 
     // Apply non-scrollable styles to the body element
@@ -42,33 +46,29 @@ const PasswordForm = ({ onLogin }) => {
 
     return (
         <div className="logging CesiEatsMedium">
-            <Blackheader/>
+            <BlackHeader/>
             <form onSubmit={onSubmit} className="container">
             <div className="backgroundLeft"></div>
                 <div className="backgroundRight"></div>
                 <h2>Indiquez votre mot de passe :</h2>
-                <div className="inputContainer">
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Saisssez votre mot de passe"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        className="input"
-                    />
-                </div>
-                <div className="inputContainer">
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        placeholder="Confirmez votre mot de passe"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                        className="input"
-                    />
-                </div>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Saisssez votre mot de passe"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="input"
+                />
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirmez votre mot de passe"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    className="input"
+                />
                 <button type="submit" className="button">Continuer</button>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
             </form>

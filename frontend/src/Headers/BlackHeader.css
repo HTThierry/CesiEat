@@ -1,7 +1,4 @@
 .black-header {
-    position: absolute;
-    top: 0;
-    left: 0;
     background-color: #000;
     align-items: center;
     justify-content: flex-start;
@@ -9,6 +6,7 @@
     height: 80px;
     margin: 0;
     display: flex;
+    flex: 0 1 auto;
 }
 
 .white-logo-div {

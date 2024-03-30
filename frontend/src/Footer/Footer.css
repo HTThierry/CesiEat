@@ -1,8 +1,6 @@
 @import url('../Fonts/Fonts.css');
 
 .HomeFooter {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     background-color: #000000;
     color: #ffffff;
