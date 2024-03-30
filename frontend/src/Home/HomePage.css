@@ -1,5 +1,5 @@
-@import url('../background_images/background_images.css');
-@import url('../fonts/fonts.css');
+@import url('../BackgroundImages/BackgroundImages.css');
+@import url('../Fonts/Fonts.css');
 
 .buttons {
     position: fixed;

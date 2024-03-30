@@ -1,9 +1,9 @@
 import React from 'react';
-import SignUp from './logging/SignUp';
-import PasswordForm from './logging/PasswordForm';
+import SignUp from './Logging/SignUp';
+import PasswordForm from './Logging/PasswordForm';
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
-import MainContent from './home/HomePage';
+import MainContent from './Home/HomePage';
 
 const App = () => (
     <div>

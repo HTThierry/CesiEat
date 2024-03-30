@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css'
-import Footer from './Footer';
+import Footer from '../Footer/Footer';
 import TransparentHeader from "../Headers/TransparentHeader";
 import {Link} from "react-router-dom";
 

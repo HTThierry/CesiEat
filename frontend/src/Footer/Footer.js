@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
-import apple from "../images/footer/AppStore.svg";
-import google from "../images/footer/GooglePlay.webp";
-import facebook from "../images/footer/Facebook.svg";
-import twitter from "../images/footer/Twitter.svg";
-import instagram from "../images/footer/Instagramme.svg";
+import apple from "../Images/Footer/AppStore.svg";
+import google from "../Images/Footer/GooglePlay.webp";
+import facebook from "../Images/Footer/Facebook.svg";
+import twitter from "../Images/Footer/Twitter.svg";
+import instagram from "../Images/Footer/Instagramme.svg";
 import "./Footer.css";
 import WhiteLogo from "../Logos/WhiteLogo";
 
@@ -43,10 +43,10 @@ export default function Footer() {
                         </a>
                     </Col>
                     <Col className="conditions">
-                        <a href="/" className="text-decoration-none text-light mr-7 text">Politique de confidentialité</a>
-                        <a href="/" className="text-decoration-none text-light mr-7 text">Conditions</a>
-                        <a href="/" className="text-decoration-none text-light mr-7 text">Tarifs</a>
-                        <a href="/" className="text-decoration-none text-light text">Ne vendez pas et ne partagez pas mes informations personnelles</a>
+                        <a href="/frontend/public" className="text-decoration-none text-light mr-7 text">Politique de confidentialité</a>
+                        <a href="/frontend/public" className="text-decoration-none text-light mr-7 text">Conditions</a>
+                        <a href="/frontend/public" className="text-decoration-none text-light mr-7 text">Tarifs</a>
+                        <a href="/frontend/public" className="text-decoration-none text-light text">Ne vendez pas et ne partagez pas mes informations personnelles</a>
                     </Col>
                 </Row>
 

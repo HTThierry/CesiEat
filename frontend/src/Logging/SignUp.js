@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './form.css';
+import './Form.css';
 import {useNavigate} from "react-router-dom";
-import logo from "../images/logo_white_cesieats.webp"
+import logo from "../Images/logo_white_cesieats.webp"
 import Blackheader from "../Headers/Blackheader";
 import WhiteLogo from "../Logos/WhiteLogo";
 
