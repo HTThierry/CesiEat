@@ -1,0 +1,10 @@
+.black-logo-image {
+    width: auto;
+    height: 40px;
+}
+
+@media screen and (max-width: 767px) {
+    .black-logo-image {
+        height: 30px;
+    }
+}

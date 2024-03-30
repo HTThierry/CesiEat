@@ -1,0 +1,180 @@
+@import url('../fonts/fonts.css');
+
+.HomeFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    .no-padding {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .first-row {
+        display: flex;
+        margin-bottom: 1rem;
+        padding-left: 0;
+        padding-right: 0;
+        flex-direction: row;
+    }
+
+    .logo {
+        justify-content: flex-start;
+        margin-left: 5%;
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .downloads {
+        justify-content: flex-end;
+        margin-right: 5%;
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .download-logo {
+        padding-left: 5%;
+        width : 135px;
+        height: 40px;
+    }
+
+    .second-row {
+        padding-left: 0;
+        margin-bottom: 1rem;
+        padding-right: 0;
+        margin-top: 0;
+    }
+
+    .white_line {
+        height: 2px;
+        background-color: #fff;
+        margin: 0 5%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .third-row {
+        margin-bottom: 1rem;
+        margin-top: 0;
+    }
+
+    .socials {
+        justify-content: flex-start;
+        margin-left: 5%;
+        padding-left: 0;
+        padding-right: 0;
+        white-space: nowrap;
+        min-width: 0;
+    }
+
+    .app-logo {
+        margin-right: 5%;
+        width : auto;
+        height: 30px;
+    }
+
+    .conditions {
+        justify-content: flex-end;
+        margin-right: 5%;
+        padding-left: 0;
+        padding-right: 0;
+        white-space: nowrap;
+        min-width: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .last_row {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .copy {
+        margin-right: 5%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .text {
+        margin-left: 3%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .first-row {
+            flex-direction: column;
+            margin-bottom: 2%;
+        }
+
+        .logo {
+            margin-left: 5%;
+            margin-bottom: 3%;
+        }
+
+        .downloads {
+            justify-content: flex-start;
+            margin-left: 5%;
+            margin-bottom: 2%;
+        }
+
+        .download-logo {
+            padding-left: 5%;
+            width : 110px;
+            height: 30px;
+        }
+
+        .second-row {
+            margin-bottom: 0;
+        }
+
+        .white_line {
+            height: 0;
+        }
+
+        .third-row {
+            align-items: flex-start;
+            flex-direction: column;
+            margin-left: 5%;
+        }
+
+        .socials {
+            justify-content: flex-start;
+            margin-left: 0;
+        }
+
+        .app-logo {
+            margin-right: 4%;
+            margin-bottom: 2%;
+            height: 25px;
+        }
+
+        .conditions {
+            justify-content: flex-start;
+            margin-right: 5%;
+            margin-left: 0;
+            flex-direction: column;
+            font-size: 12px;
+        }
+
+        .last_row {
+            display: flex;
+            justify-content: flex-start;
+            margin-left: 5%;
+            font-size: 12px;
+        }
+
+        .copy {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .text {
+            margin-left: 0;
+        }
+    }
+}

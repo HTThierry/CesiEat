@@ -1,0 +1,27 @@
+.black-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    display: flex;
+}
+
+.white-logo-div {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5%;
+    padding-left: 0;
+    padding-right: 0;
+    flex: 1;
+}
+
+@media screen and (max-width: 767px) {
+    .white-logo-div {
+        margin-left: 2%;
+    }
+}

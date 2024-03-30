@@ -1,0 +1,86 @@
+@import url('../fonts/fonts.css');
+@import url('../background_images/background_images.css');
+
+.logging {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 25px;
+        max-width: 600px;
+    }
+
+    .inputContainer {
+        margin: 10px 0;
+    }
+
+    .input {
+        padding: 15px 12px;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        height: 70px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        font-size: 25px;
+        text-align: center;
+        border: none;
+        color: #222;
+    }
+
+    .button {
+        margin: 40px 0;
+        font-size: 25px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background-color: #000000;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        width: 500px;
+        height: 70px;
+        transition: background-color 0.3s ease;
+    }
+
+    .error-message {
+        color: #e74c3c;
+        font-size: 25px;
+        margin-top: 5px;
+    }
+
+    @media screen and (max-width: 767px) {
+
+        body {
+            overflow: hidden;
+        }
+
+        .container {
+            font-size: 16px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .input {
+            font-size: 16px;
+            min-width: 350px;
+            width: 90%;
+            height: 65px;
+        }
+
+        .button {
+            font-size: 16px;
+            min-width: 350px;
+            width: 90%;
+            height: 65px;
+        }
+
+        .header {
+            height: 50px;
+        }
+
+    }
+}
