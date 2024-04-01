@@ -1,0 +1,10 @@
+.white-logo-image {
+    width: auto;
+    height: 40px;
+}
+
+@media screen and (max-width: 767px) {
+    .white-logo-image {
+        height: 30px;
+    }
+}

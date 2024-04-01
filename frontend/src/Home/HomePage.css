@@ -1,0 +1,58 @@
+@import url('../BackgroundImages/BackgroundImages.css');
+@import url('../Fonts/Fonts.css');
+
+.buttons {
+    position: fixed;
+    right: 0;
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 5%;
+    justify-content: flex-end;
+    flex: 1;
+    gap: 4%;
+}
+
+.sign-in-button,
+.sign-up-button {
+    background-color: black;
+    padding: 0 20px;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: 'UberMedium', sans-serif;
+    font-size: 24px;
+    height: 40px;
+}
+
+.sign-up-button {
+    background-color: white;
+    color: black;
+}
+
+@media screen and (max-width: 767px) {
+    .buttons {
+        margin-right: 3%;
+    }
+
+    .sign-in-button,
+    .sign-up-button {
+        background-color: black;
+        padding: 0 20px;
+        margin-left: 2%;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-family: 'UberMedium', sans-serif;
+        font-size: 12px;
+        height: 30px;
+    }
+
+    .sign-up-button {
+        background-color: white;
+        color: black;
+    }
+}
+
+
+
