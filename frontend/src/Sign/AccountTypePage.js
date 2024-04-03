@@ -11,17 +11,29 @@ const AccountTypePage = () => {
         Restaurateur: false
     });
     const [referralCode, setReferralCode] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isFormValid, setIsFormValid] = useState(false);
 
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
-        setAccountTypes(prevAccountTypes => ({
-            ...prevAccountTypes,
-            [name]: checked
-        }));
+        setAccountTypes(prevAccountTypes => {
+            const updatedAccountTypes = {
+                ...prevAccountTypes,
+                [name]: checked
+            };
+            // Update the form validation state based on the number of checked checkboxes
+            const numChecked = Object.values(updatedAccountTypes).filter(value => value).length;
+            setIsFormValid(numChecked > 0);
+            return updatedAccountTypes;
+        });
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!isFormValid) {
+            setErrorMessage('Please select at least one account type.');
+            return;
+        }
 
         console.log(accountTypes, referralCode);
         navigate('/contact', { state: { accountTypes, referralCode } });
@@ -51,6 +63,7 @@ const AccountTypePage = () => {
                         </div>
                     ))}
                 </div>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="referralCodeInput">
                     <input
                         type="text"

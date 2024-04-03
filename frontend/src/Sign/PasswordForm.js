@@ -57,8 +57,8 @@ const PasswordForm = () => {
                     placeholder="Saisssez votre mot de passe"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
                     className="input"
+                    required
                 />
                 <input
                     type="password"
@@ -66,8 +66,8 @@ const PasswordForm = () => {
                     placeholder="Confirmez votre mot de passe"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
                     className="input"
+                    required
                 />
                 <button type="submit" className="button">Continuer</button>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}

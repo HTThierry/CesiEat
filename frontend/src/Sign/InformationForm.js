@@ -33,6 +33,7 @@ const InformationForm = () => {
                 <h2>Indiquez vos informations :</h2>
                 <input
                     type="text"
+                    id="surname"
                     placeholder="Nom"
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
@@ -41,6 +42,7 @@ const InformationForm = () => {
                 />
                 <input
                     type="text"
+                    name="name"
                     placeholder="Prénom"
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}

@@ -11,7 +11,7 @@ const SignInForm = () => {
 
         if (email === password) {
             setErrorMessage('E-mail ou mot de passe incorrect');
-            return;
+
         }
     };
 
@@ -38,8 +38,8 @@ const SignInForm = () => {
                     placeholder="E-mail"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
                     className="input"
+                    required
                 />
                 <input
                     type="password"
@@ -47,8 +47,8 @@ const SignInForm = () => {
                     placeholder="Mot de passe"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
                     className="input"
+                    required
                 />
                 <button type="submit" className="button">Continuer</button>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}

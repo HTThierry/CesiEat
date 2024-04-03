@@ -38,8 +38,8 @@ const ContactForm = () => {
                     placeholder="Saisissez un adresse e-mail"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
                     className="input"
+                    required
                 />
                 <input
                     type="tel"
@@ -50,8 +50,8 @@ const ContactForm = () => {
                     title="You can only enter numbers, with a minimal of 3 characters
                     upto 45 characters are accepted."
                     onChange={(e) => setPhone(e.target.value)}
-                    required
                     className="input"
+                    required
                 />
                 <button type="submit" className="button">Continuer</button>
             </form>
