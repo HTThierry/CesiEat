@@ -47,9 +47,9 @@ const PasswordForm = () => {
     return (
         <div className="logging CesiEatsMedium">
             <BlackHeader/>
-            <form onSubmit={onSubmit} className="container">
             <div className="backgroundLeft"></div>
-                <div className="backgroundRight"></div>
+            <div className="backgroundRight"></div>
+            <form onSubmit={onSubmit} className="container">
                 <h2>Indiquez votre mot de passe :</h2>
                 <input
                     type="password"

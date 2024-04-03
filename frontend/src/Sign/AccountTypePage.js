@@ -64,15 +64,13 @@ const AccountTypePage = () => {
                     ))}
                 </div>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
-                <div className="referralCodeInput">
-                    <input
-                        type="text"
-                        placeholder="Numéro de parrainage"
-                        value={referralCode}
-                        onChange={(e) => setReferralCode(e.target.value)}
-                        className="input"
-                    />
-                </div>
+                <input
+                    type="text"
+                    placeholder="Numéro de parrainage"
+                    value={referralCode}
+                    onChange={(e) => setReferralCode(e.target.value)}
+                    className="input"
+                />
                 <button type="submit" className="button">Continuer</button>
             </form>
         </div>

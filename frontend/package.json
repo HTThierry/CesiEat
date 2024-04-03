@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "latest",
+    "@nextui-org/react": "^2.2.10",
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
@@ -11,6 +12,7 @@
     "react": "latest",
     "react-bootstrap": "latest",
     "react-dom": "latest",
+    "react-icons": "^5.0.1",
     "react-router-dom": "latest",
     "react-scripts": "latest",
     "web-vitals": "latest"

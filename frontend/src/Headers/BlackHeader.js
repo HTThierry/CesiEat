@@ -1,14 +1,15 @@
 import React from 'react';
-import './BlackHeader.css';
+import './Header.css';
 import WhiteLogo from "../Logos/WhiteLogo";
 
-const BlackHeader = ({ children }) => {
+const BlackHeader = ({  leftIcons, children, rightIcons }) => {
     return (
         <header className="black-header">
+            {leftIcons}
             <div className="white-logo-div">
                 <WhiteLogo/>
             </div>
-            {children}
+            {children || rightIcons}
         </header>
     )
 }

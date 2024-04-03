@@ -29,58 +29,76 @@ const InformationForm = () => {
             <BlackHeader/>
             <div className="backgroundLeft"></div>
             <div className="backgroundRight"></div>
-            <form onSubmit={handleSubmit} className="container">
+            <form onSubmit={handleSubmit} className="container" autoComplete="on">
                 <h2>Indiquez vos informations :</h2>
                 <input
                     type="text"
-                    id="surname"
+                    id="lastName"
+                    name="lastName"
                     placeholder="Nom"
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
                     className="input"
                     required
+                    autoComplete="family-name"
                 />
                 <input
                     type="text"
-                    name="name"
+                    id="firstName"
+                    name="firstName"
                     placeholder="Prénom"
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
                     className="input"
                     required
-                />
-                <input
-                    type="number"
-                    placeholder="Age"
-                    value={age}
-                    onChange={e => setAge(e.target.value)}
-                    className="input"
-                    required
+                    autoComplete="given-name"
                 />
                 <input
                     type="text"
+                    id="age"
+                    name="age"
+                    placeholder="Age"
+                    value={age}
+                    pattern="^[0-9\s]{1,3}$"
+                    onChange={e => setAge(e.target.value)}
+                    className="input"
+                    required
+                    autoComplete="age"
+                />
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
                     placeholder="Addresse postale"
                     value={address}
                     onChange={e => setAddress(e.target.value)}
                     className="input "
                     required
+                    autoComplete="street-address"
                 />
                 <div className="inputRow">
                     <input
                         type="text"
+                        id="city"
+                        name="city"
                         placeholder="Ville"
                         value={city}
                         onChange={e => setCity(e.target.value)}
                         className="input halfInput"
                         required
+                        autoComplete="address-level2"
                     />
                     <input
                         type="text"
+                        id="postalCode"
+                        name="postalCode"
                         placeholder="Code postal"
+                        pattern="^[0-9\s]{5,10}$"
                         value={postalCode}
                         onChange={e => setPostalCode(e.target.value)}
                         className="input halfInput"
                         required
+                        autoComplete="postal-code"
                     />
                 </div>
                 <button type="submit" className="button">Continuer</button>

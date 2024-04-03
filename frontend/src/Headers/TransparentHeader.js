@@ -1,6 +1,5 @@
 import React from 'react';
-import './TransparentHeader.css';
-import WhiteLogo from "../Logos/WhiteLogo";
+import './Header.css';
 import BlackLogo from "../Logos/BlackLogo";
 
 const TransparentHeader = ({ children }) => {
