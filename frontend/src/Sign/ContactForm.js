@@ -9,14 +9,15 @@ const ContactForm = () => {
     const [phone, setPhone] = useState('');
 
     const location = useLocation();
-    const { accountType, referralCode } = location.state || {};
+    const { accountTypes, referralCode } = location.state || {};
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        navigate('/password', { state: { accountType, referralCode, email, phone } });
+        console.log(accountTypes)
+
+        navigate('/password', { state: { accountTypes, referralCode, email, phone } });
     };
 
-    // Apply non-scrollable styles to the body element
     useEffect(() => {
         document.body.style.overflow = 'hidden'; // Disable scrolling on mount
         return () => {

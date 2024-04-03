@@ -4,17 +4,17 @@ import BlackHeader from "../Headers/BlackHeader";
 import {useLocation, useNavigate} from 'react-router-dom';
 
 
-const PasswordForm = ({ onLogin }) => {
+const PasswordForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate()
     const location = useLocation();
-    const { accountType, referralCode, email, phone } = location.state || {};
+    const { accountTypes, referralCode, email, phone } = location.state || {};
 
     const validatePassword = (password) => {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\]\[;'-])[A-Za-z\d@$!%*?&\]\[;'-]{8,16}$/;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@_$!%*?&\]\[;'-])[A-Za-z\d@$!%*?&\]\[;'-]{8,16}$/;
         return regex.test(password);
     };
 
@@ -31,7 +31,7 @@ const PasswordForm = ({ onLogin }) => {
             return;
         }
 
-        navigate('/information', { state: { accountType, referralCode, email, phone, password} });
+        navigate('/information', { state: { accountTypes, referralCode, email, phone, password} });
     };
 
     // Apply non-scrollable styles to the body element

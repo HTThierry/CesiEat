@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './InformationForm.css';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import BlackHeader from "../Headers/BlackHeader";
-import Footer from "../Footer/Footer";
 
 const InformationForm = () => {
-    const navigate = useNavigate()
     const [lastName, setLastName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [age, setAge] = useState('');
@@ -14,11 +12,11 @@ const InformationForm = () => {
     const [postalCode, setPostalCode] = useState('');
 
     const location = useLocation();
-    const { accountType, referralCode, email, phone, password } = location.state || {};
+    const { accountTypes, referralCode, email, phone, password } = location.state || {};
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ accountType, referralCode, email, phone, password, lastName, firstName, age, address, city, postalCode });
+        console.log({ accountTypes, referralCode, email, phone, password, lastName, firstName, age, address, city, postalCode });
     };
 
     // Apply non-scrollable styles to the body element
