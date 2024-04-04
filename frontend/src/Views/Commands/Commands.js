@@ -1,7 +1,7 @@
 import React from "react";
 import "./Commands.css"
 
-const Commands = ({ children }) => {
+const Commands = () => {
     return (
         <></>
     )

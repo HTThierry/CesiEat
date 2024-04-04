@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MainPage.css';
 import Navbar from './Navbar/Navbar';
 import BlackHeader from "../Headers/BlackHeader";
-import ProfileIcon from "../Icons/Profile/ProfileIcon";
-import CartIcon from "../Icons/Cart/CartIcon";
+import { MdOutlineShoppingCart  } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 import Footer from "../Footer/Footer";
 
 const MainPage = () => {
@@ -17,8 +17,8 @@ const MainPage = () => {
                 }
                 rightIcons={
                     <div className="right-icons">
-                        <CartIcon/>
-                        <ProfileIcon/>
+                        <MdOutlineShoppingCart color="#fff" size="40px" />
+                        <CgProfile color="#fff" size="40px" />
                     </div>
                 }
             />

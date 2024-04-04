@@ -1,7 +1,7 @@
 import React from "react";
 import "./Notifications.css"
 
-const Notifications = ({ children }) => {
+const Notifications = () => {
     return (
         <></>
     )

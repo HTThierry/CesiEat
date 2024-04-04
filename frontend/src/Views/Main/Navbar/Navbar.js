@@ -10,7 +10,7 @@ function Navbar() {
 
     const showSidebar = () => setSidebar(!sidebar);
 
-    const closeSidebar = (e) => setSidebar(false);
+    const closeSidebar = () => setSidebar(false);
 
 
     return (
