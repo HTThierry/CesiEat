@@ -1,0 +1,85 @@
+@import url('../../Styles/Form.css');
+
+.logging {
+    .accountTypeOptions {
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+        margin: 10px 0;
+    }
+
+    .checkboxContainer {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .checkboxButton {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70px;
+        height: 70px;
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 16px;
+        padding-bottom: 50px;
+    }
+
+    .checkboxLabel {
+        width: 70px;
+        height: 70px;
+        background-color: #f2f2f2;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 16px;
+    }
+
+    .checkboxText {
+        margin-top: 10px;
+        font-size: 1em;
+    }
+
+    .checkboxButton:hover input ~ .checkboxLabel {
+        background-color: gray;
+    }
+
+    .checkboxButton input:active ~ .checkboxLabel {
+        background-color: white;
+    }
+
+    .checkboxButton input:checked ~ .checkboxLabel {
+        background-color: gray;
+    }
+
+    .checkboxLabel:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Display checkmark when checked */
+    .checkboxButton input:checked ~ .checkboxLabel:after {
+        display: block;
+    }
+
+    .checkboxButton .checkboxLabel:after {
+        content: '✓';
+        position: absolute;
+        font-size: 2em;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+    }
+
+}

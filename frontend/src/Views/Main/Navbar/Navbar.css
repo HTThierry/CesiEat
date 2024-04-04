@@ -1,5 +1,7 @@
 .navBar {
     font-size: 24px;
+    z-index: 1000;
+
     .menu-bars {
         display: flex;
         align-items: center;
@@ -15,7 +17,6 @@
         top: 0;
         left: -100%;
         transition: 850ms;
-        z-index: 1000;
     }
 
     .nav-menu.active {
@@ -39,7 +40,7 @@
         width: 100vw;
         height: 100vh;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
+        z-index: -1;
         display: block;
     }
     .hide-overlay {

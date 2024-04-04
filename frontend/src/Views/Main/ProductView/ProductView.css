@@ -1,0 +1,59 @@
+@import url('../../../Styles/Fonts/Fonts.css');
+@import url('../../Components/BackgroundImages/BackgroundImages.css');
+
+.main-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .left-icons {
+        position: fixed;
+        left: 2%;
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 20;
+    }
+
+    .right-icons {
+        position: fixed;
+        right: 3vw;
+        display: flex;
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .right-icons > *:not(:last-child) {
+        margin-right: 2vw;
+    }
+
+    .container {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 25px;
+        max-width: 600px;
+    }
+
+    .some {
+     height: 1000px;
+    }
+
+    .backgroundRight,
+    .backgroundLeft {
+        width: 20%;
+    }
+
+    .backgroundLeft {
+        background-position: center right;
+    }
+
+    .backgroundRight {
+        background-position: center left;
+    }
+}

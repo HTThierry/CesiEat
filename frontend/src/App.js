@@ -1,29 +1,29 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
-import ContactForm from './Views/Login/ContactForm';
-import PasswordForm from './Views/Login/PasswordForm';
-import MainContent from './Views/Home/HomePage';
-import SignInForm from "./Views/Login/SignInForm";
-import InformationForm from "./Views/Login/InformationForm";
-import AccountTypePage from "./Views/Login/AccountTypePage";
-import MainPage from "./Views/Main/MainPage";
-import Commands from "./Views/Commands/Commands";
-import Invite from "./Views/Invite/Invite";
-import Notifications from "./Views/Notifications/Notifications";
+import ContactView from './Views/SignUpView/ContactView';
+import PasswordView from './Views/SignUpView/PasswordView';
+import HomePage from './Views/HomeView/HomeView';
+import SignInView from "./Views/SignInView/SignInView";
+import InformationView from "./Views/SignUpView/InformationView";
+import AccountTypeView from "./Views/SignUpView/AccountTypeView";
+import ProductView from "./Views/Main/ProductView/ProductView";
+import CommandsView from "./Views/Main/CommandsView/CommandsView";
+import InviteView from "./Views/Main/InviteView/InviteView";
+import NotificationsView from "./Views/Main/NotificationsView/NotificationsView";
 
 const App = () => (
     <div>
         <Routes>
-            <Route path="/" element={<MainContent />}/>
-            <Route path="/main" element={<MainPage />}/>
-            <Route path="/contact" element={<ContactForm />}/>
-            <Route path="/password" element={<PasswordForm />}/>
-            <Route path="/signin" element={<SignInForm />}/>
-            <Route path="/information" element={<InformationForm/>}/>
-            <Route path="/signup" element={<AccountTypePage/>}/>
-            <Route path='/commands'  element={<Commands/>} />
-            <Route path='/invite' element={<Invite/>} />
-            <Route path='/notifications' element={<Notifications/>}/>
+            <Route path="/" element={<HomePage />}/>
+            <Route path="/products" element={<ProductView />}/>
+            <Route path="/contact" element={<ContactView />}/>
+            <Route path="/password" element={<PasswordView />}/>
+            <Route path="/signin" element={<SignInView />}/>
+            <Route path="/information" element={<InformationView/>}/>
+            <Route path="/signup" element={<AccountTypeView/>}/>
+            <Route path='/commands'  element={<CommandsView/>} />
+            <Route path='/invite' element={<InviteView/>} />
+            <Route path='/notifications' element={<NotificationsView/>}/>
         </Routes>
     </div>
 );
