@@ -1,15 +1,15 @@
 import React from 'react';
-import ContactForm from './Sign/ContactForm';
-import PasswordForm from './Sign/PasswordForm';
 import {Routes, Route} from 'react-router-dom';
-import MainContent from './Home/HomePage';
-import SignInForm from "./Sign/SignInForm";
-import InformationForm from "./Sign/InformationForm";
-import AccountTypePage from "./Sign/AccountTypePage";
-import MainPage from "./Main/MainPage";
-import Commands from "./Commands/Commands";
-import Invite from "./Invite/Invite";
-import Notifications from "./Notifications/Notifications";
+import ContactForm from './Views/Login/ContactForm';
+import PasswordForm from './Views/Login/PasswordForm';
+import MainContent from './Views/Home/HomePage';
+import SignInForm from "./Views/Login/SignInForm";
+import InformationForm from "./Views/Login/InformationForm";
+import AccountTypePage from "./Views/Login/AccountTypePage";
+import MainPage from "./Views/Main/MainPage";
+import Commands from "./Views/Commands/Commands";
+import Invite from "./Views/Invite/Invite";
+import Notifications from "./Views/Notifications/Notifications";
 
 const App = () => (
     <div>
