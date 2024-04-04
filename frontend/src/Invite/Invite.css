@@ -6,6 +6,14 @@
     flex-direction: column;
     min-height: 100vh;
 
+    .left-icons {
+        position: fixed;
+        left: 2%;
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 20;
+    }
+
     .container {
         margin-top: var(--header-height);
         display: flex;
@@ -19,7 +27,10 @@
     }
 
 
-    .input {
+    .code {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin: 10px 0;
         padding: 15px 12px;
         border-radius: 20px;
@@ -32,5 +43,36 @@
         text-align: center;
         border: none;
         color: #222;
+    }
+
+    .code button {
+        margin-left: auto;
+    }
+
+    .code span {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+
+    .input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .copy-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .copied-text {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 1rem;
     }
 }
