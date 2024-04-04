@@ -1,0 +1,19 @@
+{
+  "name": "cesieat",
+  "version": "1.0.0",
+  "description": "├───backend\r │   ├───api\r │   ├───config\r │   ├───models\r │   ├───scripts\r │   ├───services\r │   │   ├───authentication\r │   │   ├───delivery\r │   │   ├───notification\r │   │   ├───order\r │   │   ├───payment\r │   │   ├───restaurant\r │   │   ├───shopping cart\r │   │   └───user\r │   ├───subcribers\r │   └───test\r ├───docker\r │   ├───backend\r │   │   ├───authentication\r │   │   ├───delivery\r │   │   ├───notification\r │   │   ├───order\r │   │   ├───payment\r │   │   ├───restaurant\r │   │   ├───shopping cart\r │   │   └───user\r │   └───frontend\r └───frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.0"
+  }
+}

@@ -35,7 +35,7 @@ const AccountTypePage = () => {
             <form onSubmit={handleSubmit} className="container">
                 <h2>Indiquez le type de compte ?</h2>
                 <div className="accountTypeOptions">
-                    {["Client", "Livreur", "Restaurateur"].map((type) => (
+                    {["Client", "Livreur", "Restaurateur","Autres"].map((type) => (
                         <div key={type} className="checkboxContainer">
                             <label className="checkboxButton">
                                 <input
