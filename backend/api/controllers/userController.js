@@ -1,5 +1,5 @@
 const User = require('../../models/userModel');
-
+const bcrypt = require('bcrypt');
 const logger = require('../../config/logger');
 
 
@@ -82,5 +82,31 @@ exports.deleteUser = async (req, res) => {
   } catch (error) {
     logger.error(`Delete User Error: ${error.message}`, { endpoint: 'deleteUser', method: 'DELETE' });
     res.status(500).json({ message: error.message });
+  }
+};
+
+
+exports.register = async (req, res) => {
+  const { email, password, accountType } = req.body; // Assuming you're using email, and accountType is part of your user model
+
+  if (!email || !password) {
+    logger.error("Email and password are required for registration");
+    return res.status(400).json({ "msg": "Email and password are required" });
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({
+      email: email,
+      password: hashedPassword,
+      accountType: accountType // assuming you've added accountType to your schema
+    });
+
+    const savedUser = await newUser.save();
+    logger.info(`New user created: ${email}`);
+    return res.status(201).json({ "msg": "New User created!", "userId": savedUser._id });
+  } catch (error) {
+    logger.error(`Create User Error: ${error.message}`);
+    return res.status(500).json({ "msg": "Error creating user", "error": error.message });
   }
 };

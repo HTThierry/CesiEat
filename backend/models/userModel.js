@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
 
   accountType: {
       type: String,
-      required: false,
-      enum: ["Customer",
-        "Delivery man",
-        "Restaurateur",
-        "Others"] 
+      required: true,
+      enum: ["Client",
+        "Livreur",
+        "Restaurateur"] 
   },
   referralCode: {
       type: String,
@@ -40,7 +40,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     match: /.+\@.+\..+/,
-    unique: true,
+    //unique: false,
     trim: true,
     lowercase: true
   },
@@ -81,13 +81,21 @@ const userSchema = new Schema({
   resetPasswordExpires: Date
 }, { timestamps: true });
 
-// Handle duplicate email errors
-// userSchema.post('save', function(error, doc, next) {
-//   if (error.name === 'MongoServerError' && error.code === 11000) {
-//     next(new Error('Email already exists.'));
-//   } else {
-//     next(error);
-//   }
-// });
+// Pre-save hook to hash password before saving
+userSchema.pre('save', async function (next) {
+  // Only hash the password if it has been modified (or is new)
+  if (!this.isModified('password')) return next();
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Creating a compound unique index
+userSchema.index({ email: 1, accountType: 1 }, { unique: true });
 
 module.exports = mongoose.model('userModel', userSchema);
