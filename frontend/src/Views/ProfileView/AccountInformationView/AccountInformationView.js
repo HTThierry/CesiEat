@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from "react";
 import "./AccountInformationView.css"
+import defaultProfilePic from '../../../Images/default.jpeg';
+import {IoPencil} from "react-icons/io5";
 
 const AccountInformationView = () => {
+    const [profilePic, setProfilePic] = useState(defaultProfilePic);
     const [accountInfo, setAccountInfo] = useState({
         nom: '',
         prenom: '',
@@ -16,12 +19,27 @@ const AccountInformationView = () => {
     const [editField, setEditField] = useState(null);
 
     useEffect(() => {
-        // Fetch the data from the API
         fetch('/api/account-info')
             .then(response => response.json())
             .then(data => setAccountInfo(data))
             .catch(error => console.error('Error fetching data: ', error));
+
+        fetch('/api/profile-picture')
+            .then(response => response.json())
+            .then(data => setProfilePic(data.imageUrl))
+            .catch(error => console.error('Error fetching profile picture: ', error));
     }, []);
+
+    const handleProfilePicChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfilePic(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const handleEdit = (field) => {
         setEditField(field);
@@ -83,7 +101,20 @@ const AccountInformationView = () => {
 
     return (
         <div className="account-info-container">
-            <h2>Informations sur le compte</h2>
+            <h2>Informations relatives au compte</h2>
+            <div className="profile-picture-container">
+                <label htmlFor="profile-pic-input" className="profile-pic-label">
+                    <img src={profilePic} alt="Profile" className="profile-picture"/>
+                    <IoPencil className="edit-icon"/>
+                </label>
+                <input
+                    id="profile-pic-input"
+                    type="file"
+                    onChange={handleProfilePicChange}
+                    className="profile-pic-input"
+                    style={{display: 'none'}}
+                />
+            </div>
             {renderEditableField('nom', 'Nom')}
             {renderEditableField('prenom', 'Prénom')}
             {renderEditableField('age', 'Âge')}

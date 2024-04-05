@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
+import './Navbar.css';
+import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { NavbarData } from './NavbarData';
-import './Navbar.css';
 import { IconContext } from 'react-icons';
+import defaultProfilePic from "../../../Images/default.jpeg";
 
 function Navbar() {
+    const [profilePic] = useState(defaultProfilePic);
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
@@ -17,16 +19,18 @@ function Navbar() {
         <div className="navBar">
             <IconContext.Provider value={{ color: '#fff', size:'35px'}}>
                 <Link to='#' className='menu-bars'>
-                    <FaIcons.FaBars onClick={showSidebar} />
+                    <FaBars onClick={showSidebar} />
                 </Link>
                 <div className={sidebar ? 'overlay' : 'hide-overlay'} onClick={closeSidebar}></div>
                 <nav className= {sidebar ? 'nav-menu active' : 'nav-menu'}  >
                     <div className='nav-menu-items'>
                         <div className='navbar-toggle'>
-                            <div className="profile-picture-placeholder"></div>
+                            <div className="profile-picture-placeholder">
+                                <img src={profilePic} alt="Profile" className="profile-picture"/>
+                            </div>
                             <div className="profile">
-                                <div className="name-placeholder">Name</div>
-                                <Link to="/" className="manage-account-button">Gérer le compte</Link>
+                            <div className="name-placeholder">Name</div>
+                                <Link to="/profile/information" className="manage-account-button">Gérer le compte</Link>
                             </div>
                         </div>
                         {NavbarData.map((item, index) => {

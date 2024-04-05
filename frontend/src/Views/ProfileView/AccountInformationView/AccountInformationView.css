@@ -7,7 +7,7 @@
     h2 {
         font-size: 36px;
         font-weight: bold;
-        margin-bottom: 4%;
+        margin-bottom: 2%;
     }
 
     .info-field {
@@ -38,6 +38,82 @@
             cursor: pointer;
         }
     }
+    .profile-picture-container {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2%;
+    }
+
+    .profile-picture {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-pic-input {
+        display: none;
+    }
+
+    .profile-picture:hover + .profile-pic-input,
+    .profile-pic-input:hover {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .account-info-container .edit-icon-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: white;
+        border-radius: 50%;
+        padding: 5px;
+    }
+
+    .account-info-container .edit-icon {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .profile-pic-input {
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .profile-pic-label {
+        cursor: pointer;
+    }
+
+    .edit-icon {
+        position: absolute;
+        bottom: 10px    ;
+        right: 0;
+        color: #000000;
+        background-color: #ffffff;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        padding: 5px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
 }
 
 
