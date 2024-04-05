@@ -19,20 +19,26 @@ import DeliveryView from "./Views/ProfileView/DeliveryView/DeliveryView";
 import SuggestionsView from "./Views/ProfileView/SuggestionsView/SuggestionsView";
 import StatisticsView from "./Views/ProfileView/StatisticsView/StatisticsView";
 import AccountInformationView from "./Views/ProfileView/AccountInformationView/AccountInformationView";
+import MailConfirmation from "./Views/SignUpView/MailConfirmation";
 
 const App = () => (
     <div>
         <Routes>
             <Route path="/" element={<HomePage />}/>
-            <Route path="/products" element={<ProductView />}/>
-            <Route path="/contact" element={<ContactView />}/>
-            <Route path="/password" element={<PasswordView />}/>
-            <Route path="/signin" element={<SignInView />}/>
-            <Route path="/information" element={<InformationView/>}/>
+
             <Route path="/signup" element={<AccountTypeView/>}/>
+            <Route path="/signup/contact" element={<ContactView />}/>
+            <Route path="/signup/password" element={<PasswordView />}/>
+            <Route path="/signup/confirmemail" element={<MailConfirmation/>}/>
+            <Route path="/signup/information" element={<InformationView/>}/>
+
+            <Route path="/signin" element={<SignInView />}/>
+
+            <Route path="/products" element={<ProductView />}/>
             <Route path='/commands'  element={<CommandsView/>} />
             <Route path='/invite' element={<InviteView/>} />
             <Route path='/notifications' element={<NotificationsView/>}/>
+
             <Route path='/profile' element={<MainLayout/>}>
                 <Route path='/profile/information' element={<AccountInformationView/>}/>
                 <Route path='/profile/statistics' element={<StatisticsView/>}/>

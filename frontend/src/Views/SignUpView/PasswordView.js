@@ -31,7 +31,7 @@ const PasswordView = () => {
             return;
         }
 
-        navigate('/information', { state: { accountTypes, referralCode, email, phone, password} });
+        navigate('/signup/confirmemail', { state: { accountTypes, referralCode, email, phone, password } });
     };
 
     // Apply non-scrollable styles to the body element

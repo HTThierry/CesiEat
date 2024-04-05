@@ -15,7 +15,7 @@ const ContactView = () => {
 
         console.log(accountTypes)
 
-        navigate('/password', { state: { accountTypes, referralCode, email, phone } });
+        navigate('/signup/password', { state: { accountTypes, referralCode, email, phone } });
     };
 
     useEffect(() => {

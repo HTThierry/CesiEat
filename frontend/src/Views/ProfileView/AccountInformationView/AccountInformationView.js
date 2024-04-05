@@ -12,7 +12,7 @@ const AccountInformationView = () => {
         codePostal: '',
         ville: '',
     });
-    // State to track the field being edited
+
     const [editField, setEditField] = useState(null);
 
     useEffect(() => {

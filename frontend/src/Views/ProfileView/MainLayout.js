@@ -3,22 +3,24 @@ import './MainLayout.css';
 import BlackHeader from "../Components/Headers/BlackHeader";
 import Sidebar from "./Sidebar/Sidebar";
 import { Outlet } from 'react-router-dom';
-import DeleteAccount from "./DeleteAccount/DeleteAccount";
+import PopUp from "./PopUp/PopUp";
 
 const MainLayout = () => {
 
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [isDeleteOpen, setDeleteOpen] = useState(false);
+    const [isLogOutOpen, setLogOutOpen] = useState(false);
 
     const handleDeleteAccount = () => {
-        setModalOpen(true);
+        setDeleteOpen(true);
     };
 
-    const handleCloseModal = () => {
-        setModalOpen(false);
+    const handleClose = () => {
+        setDeleteOpen(false);
+        setLogOutOpen(false);
     };
 
     const handleLogOut = () => {
-        setModalOpen(true);
+        setLogOutOpen(true);
     };
 
     return (
@@ -26,7 +28,8 @@ const MainLayout = () => {
             <BlackHeader />
             <div className="main-content">
                 <Sidebar onDeleteAccount={handleDeleteAccount} onLogOut={ handleLogOut}/>
-                <DeleteAccount isOpen={isModalOpen} onConfirm={handleCloseModal} onCancel={handleCloseModal}/>
+                <PopUp text={"Voulez-vous vraiment supprimer votre compte ?"} isOpen={isDeleteOpen} onConfirm={handleDeleteAccount} onCancel={handleClose}/>
+                <PopUp text={"Voulez-vous vraiment vous déconnecter ?"} isOpen={isLogOutOpen} onConfirm={handleLogOut} onCancel={handleClose}/>
                 <style>{'body { background-color: rgba(250 , 146 , 105); }'}</style>
                 <Outlet/>
             </div>

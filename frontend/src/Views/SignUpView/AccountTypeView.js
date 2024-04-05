@@ -36,7 +36,7 @@ const AccountTypeView = () => {
         }
 
         console.log(accountTypes, referralCode);
-        navigate('/contact', { state: { accountTypes, referralCode } });
+        navigate('/signup/contact', { state: { accountTypes, referralCode } });
     };
 
     return (

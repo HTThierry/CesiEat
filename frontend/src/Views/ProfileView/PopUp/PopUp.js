@@ -1,20 +1,20 @@
 import React from 'react';
-import './DeleteAccount.css';
+import './PopUp.css';
 
-const DeleteAccount = ({ isOpen, onConfirm, onCancel }) => {
+const PopUp = ({ text, isOpen, onConfirm, onCancel }) => {
 
     return (
         <div className="deleteAccount">
             <div className={isOpen ? 'overlay' : 'hide-overlay'} onClick={onCancel}></div>
             <div className={isOpen ? "centered-container" : 'hide'}>
-                <p>Voulez-vous vraiment supprimer votre compte ?</p>
+                <p>{text}</p>
                 <div className="button-container">
-                    <button onClick={onConfirm} className="redButton">Yes</button>
-                    <button onClick={onCancel} className="greenButton">No</button>
+                    <button onClick={onConfirm} className="whiteButton">Yes</button>
+                    <button onClick={onCancel} className="blackButton">No</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default DeleteAccount;
+export default PopUp;
