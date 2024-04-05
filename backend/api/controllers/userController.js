@@ -1,6 +1,7 @@
 const User = require('../../models/userModel');
 const bcrypt = require('bcrypt');
 const logger = require('../../config/logger');
+const jwt = require('jsonwebtoken');
 
 
 // Create a new user
@@ -108,5 +109,47 @@ exports.register = async (req, res) => {
   } catch (error) {
     logger.error(`Create User Error: ${error.message}`);
     return res.status(500).json({ "msg": "Error creating user", "error": error.message });
+  }
+};
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+      const user = await User.findOne({ email: email });
+      if (user && await bcrypt.compare(password, user.password)) {
+          const accessToken = jwt.sign(
+              { userId: user._id, email: user.email, accountType: user.accountType },
+              process.env.ACCESS_JWT_KEY,
+              { expiresIn: '2m' }
+          );
+
+          const refreshToken = jwt.sign(
+              { userId: user._id, email: user.email, accountType: user.accountType },
+              process.env.REFRESH_JWT_KEY,
+              { expiresIn: '1d' }
+          );
+
+          // cookie config
+          const cookieOptions = {
+              httpOnly: true,
+              secure: process.env.NODE_ENV === 'production',
+              sameSite: 'Strict',
+              expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+          };
+
+          res.cookie('refreshToken', refreshToken, cookieOptions);
+
+          logger.info(`User logged in: ${email}`);
+          return res.status(200).json({
+              message: "You are now connected!",
+              accessToken
+          });
+      } else {
+          logger.warn(`Login failed for user: ${email}`);
+          return res.status(401).json({ message: "Invalid credentials" });
+      }
+  } catch (error) {
+      logger.error(`Login Error: ${error.message}`);
+      return res.status(500).json({ message: "An error occurred during the login process" });
   }
 };

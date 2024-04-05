@@ -3,6 +3,7 @@ require('dotenv').config({ path: './config/.env' }); // Load environment variabl
 const userRoutes = require('./api/routes/userRoutes');
 const app = express();
 const cors = require('cors');
+authRoutes = require('./api/routes/authRoutes');
 
 const ApiVersion = process.env.API_VERSION || 'v1'; // Use API version from environment variables or default to 'v1'
 const PORT = process.env.API_PORT || 3000; 
@@ -28,6 +29,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
     // User routes
     app.use(`/api/${ApiVersion}/users`, userRoutes);
+    app.use(`/api/${ApiVersion}/auth`, authRoutes);
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}.`);

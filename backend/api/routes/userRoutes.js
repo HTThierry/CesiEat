@@ -172,5 +172,4 @@ router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 
 
-router.put('/register', userController.register);
 module.exports = router;
