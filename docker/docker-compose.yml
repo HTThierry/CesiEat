@@ -1,0 +1,167 @@
+version: '3.8'
+
+services:
+
+# User Services:
+  mongo-db-user:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-user:
+    build: ./user
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "996:996"
+    depends_on:
+      - mongo-db-user
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+# Restaurant Services:
+  mongo-db-restaurant:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-restaurant:
+    build: ./restaurant
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "997:996"
+    depends_on:
+      - mongo-db-restaurant
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+# Shopping-Cart Services:
+  mongo-db-shopping-cart:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-shopping-cart:
+    build: ./shopping-cart
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "998:996"
+    depends_on:
+      - mongo-db-shopping-cart
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+# Order Services:
+  mongo-db-order:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27020:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-order:
+    build: ./order
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "998:996"
+    depends_on:
+      - mongo-db-order
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+# Payment Services:
+  mongo-db-payment:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27021:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-payment:
+    build: ./payment
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "999:996"
+    depends_on:
+      - mongo-db-payment
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+# Delivery Services:
+  mongo-db-delivery:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27022:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-delivery:
+    build: ./delivery
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "1000:996"
+    depends_on:
+      - mongo-db-delivery
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+    # Notification Services:
+  mongo-db-notification:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27023:27017"
+    volumes:
+      - mongodb_data:/data/db
+  node-notification:
+    build: ./notification
+    environment:
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "1001:996"
+    depends_on:
+      - mongo-db-notification
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+volumes:
+  mongodb_data:
