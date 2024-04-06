@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController'); // Adjust the path according to your project structure
-
+const authController = require('../controllers/authController'); 
+require('dotenv').config({ path: './config/.env' })
 // Define the route for logging in
 router.post('/login', authController.login);
 

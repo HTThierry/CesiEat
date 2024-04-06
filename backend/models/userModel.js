@@ -44,6 +44,9 @@ const userSchema = new Schema({
     trim: true,
     lowercase: true
   },
+  isEmailVerified: { type: Boolean, default: false },
+  emailVerificationToken: String,
+  emailVerificationTokenExpires: Date,
   phone: {
     type: String,
     required: true,
@@ -72,7 +75,7 @@ const userSchema = new Schema({
     required: true,
     validate: {
       validator: function(v) {
-        return /\d{5}/.test(v); // Adjust the regex based on the country's postal code format
+        return /\d{5}/.test(v); 
       },
       message: props => `${props.value} is not a valid postal code!`
     }

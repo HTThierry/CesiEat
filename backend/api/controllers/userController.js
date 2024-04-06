@@ -1,16 +1,23 @@
 const User = require('../../models/userModel');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const logger = require('../../config/logger');
 const jwt = require('jsonwebtoken');
-
+const sendVerificationEmail = require('../../subcribers/sendVerificationEmail');
 
 // Create a new user
 
 exports.createUser = async (req, res) => {
   try {
     const user = new User(req.body);
+
+    user.emailVerificationToken = crypto.randomBytes(32).toString('hex');
+    user.emailVerificationTokenExpires = Date.now() + 3600000; 
+
     const savedUser = await user.save();
-    res.status(201).json(savedUser);
+    sendVerificationEmail(savedUser);
+
+    res.status(201).json({ user: savedUser, message: 'User created. Please check your email to verify your account.' });
   } catch (error) {
     logger.error(`Create User Error: ${error.message}`, { endpoint: 'createUser', method: 'POST' });
     res.status(500).json({ message: error.message });

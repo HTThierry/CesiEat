@@ -18,7 +18,7 @@ const notificationSchema = new Schema({
   },
   notificationType: {
     type: String,
-    enum: ['order_update', 'promotional', 'system'],
+    enum: ['order_update', 'promotional', 'system','email_verification'],
     required: true
   },
   read: {

@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/userModel'); 
 const logger = require('../../config/logger'); 
+const express = require('express');
+const router = express.Router();
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -25,15 +27,15 @@ exports.login = async (req, res) => {
     );
 
     const cookieOptions = {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      httpOnly: false,
+      secure: false,
       sameSite: 'Strict',
-      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+      expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
     };
 
     res.cookie('refreshToken', refreshToken, cookieOptions);
     logger.info(`User logged in: ${email}`);
-    res.status(200).json({ message: "You are now connected!", accessToken });
+    res.status(200).json({ message: "You are now connected!", accessToken, refreshToken});
   } catch (error) {
     logger.error(`Login Error: ${error.message}`);
     res.status(500).json({ message: "An error occurred during the login process" });
@@ -103,3 +105,21 @@ exports.authenticate = (req, res, next) => {
     logger.info('User logged out successfully');
     res.status(200).json({ message: "You have been logged out successfully" });
 };
+
+router.get('/verify-email/:token', async (req, res) => {
+  const user = await User.findOne({
+      emailVerificationToken: req.params.token,
+      emailVerificationTokenExpires: { $gt: Date.now() }
+  });
+
+  if (!user) {
+      return res.status(400).send('Token is invalid or has expired');
+  }
+
+  user.isEmailVerified = true;
+  user.emailVerificationToken = undefined;
+  user.emailVerificationTokenExpires = undefined;
+  await user.save();
+
+  res.send('Email has been verified');
+});
