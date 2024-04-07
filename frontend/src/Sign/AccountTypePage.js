@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import './AccountTypepage.css';
 import BlackHeader from "../Headers/BlackHeader";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const AccountTypePage = () => {
-    const navigate = useNavigate();
-    const [accountType, setAccountType] = useState(''); // Single value for account type
+    const navigate = useNavigate()
+    const [accountTypes, setAccountTypes] = useState({
+        Client: false,
+        Livreur: false,
+        Restaurateur: false
+    });
     const [referralCode, setReferralCode] = useState('');
 
-    const handleRadioButtonChange = (e) => {
-        const { value } = e.target;
-        setAccountType(value); // Set the account type to the value of the selected radio button
+    const handleCheckboxChange = (e) => {
+        const { name, checked } = e.target;
+        setAccountTypes(prevAccountTypes => ({
+            ...prevAccountTypes,
+            [name]: checked
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(accountType, referralCode);
-        navigate('/contact', { state: { accountType, referralCode } }); // Pass the selected accountType
+        console.log(accountTypes, referralCode);
+        navigate('/contact', { state: { accountTypes, referralCode } });
     };
 
     return (
@@ -28,20 +35,19 @@ const AccountTypePage = () => {
             <form onSubmit={handleSubmit} className="container">
                 <h2>Indiquez le type de compte ?</h2>
                 <div className="accountTypeOptions">
-                    {["Client", "Livreur", "Restaurateur"].map((type) => ( // Removed "Autres" for simplicity
-                        <div key={type} className="radioContainer">
-                            <label className="radioButton">
+                    {["Client", "Livreur", "Restaurateur","Autres"].map((type) => (
+                        <div key={type} className="checkboxContainer">
+                            <label className="checkboxButton">
                                 <input
                                     id={type}
-                                    type="radio" // Use radio buttons instead of checkboxes
-                                    name="accountType"
-                                    value={type}
-                                    checked={accountType === type}
-                                    onChange={handleRadioButtonChange}
+                                    type="checkbox"
+                                    name={type}
+                                    checked={accountTypes[type]}
+                                    onChange={handleCheckboxChange}
                                 />
-                                <span className="radioLabel"></span>
+                                <span className="checkboxLabel"></span>
                             </label>
-                            <div className="radioText">{type}</div>
+                            <div className="checkboxText">{type}</div>
                         </div>
                     ))}
                 </div>
@@ -61,4 +67,3 @@ const AccountTypePage = () => {
 };
 
 export default AccountTypePage;
-

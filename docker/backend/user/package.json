@@ -1,0 +1,14 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "description": "user service",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "author": "Mamadou Barry",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -5,7 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import MainContent from './Home/HomePage';
 import SignInForm from "./Sign/SignInForm";
 import InformationForm from "./Sign/InformationForm";
-import AccountTypePage from "./Sign/AccountTypePage";
+import AccountTypePage from "./Sign/AccountTypePageCheckbox";
 
 const App = () => (
     <div>

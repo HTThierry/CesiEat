@@ -131,3 +131,5 @@ dist
 
 #test ignore
 .backend\test\API\index_test.js
+
+.idea

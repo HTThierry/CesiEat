@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios for HTTP requests
 import './Form.css';
 import BlackHeader from "../Headers/BlackHeader";
+const API_VERSION = process.env.REACT_APP_API_VERSION;
+const API_URL = `http://localhost:3000`;
 const SignInForm = () => {
-    const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
-        if (email === password) {
-            setErrorMessage('E-mail ou mot de passe incorrect');
-            return;
+        const apiUrl = `${API_URL}/api/${API_VERSION}/auth/login`;
+
+        try {
+            const response = await axios.post(apiUrl, { email, password });
+            console.log('Login successful:', response.data);
+            // Handle successful login here (e.g., redirecting the user, storing the access token, etc.)
+        } catch (error) {
+            if (error.response && error.response.data) {
+                setErrorMessage(error.response.data.message || 'Error logging in');
+            } else {
+                setErrorMessage('An error occurred during login');
+            }
         }
     };
 
     // Apply non-scrollable styles to the body element
     useEffect(() => {
         document.body.style.overflow = 'hidden'; // Disable scrolling on mount
-        document.body.classList.add("no-scroll")
+        document.body.classList.add("no-scroll");
         return () => {
             document.body.style.overflow = 'auto'; // Re-enable scrolling on unmount
-            document.body.classList.remove("no-scroll")
+            document.body.classList.remove("no-scroll");
         };
     }, []);
 

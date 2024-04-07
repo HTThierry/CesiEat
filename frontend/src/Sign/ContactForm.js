@@ -3,6 +3,7 @@ import './Form.css';
 import {useLocation, useNavigate} from "react-router-dom";
 import BlackHeader from "../Headers/BlackHeader";
 
+
 const ContactForm = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
