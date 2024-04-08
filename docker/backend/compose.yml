@@ -24,7 +24,7 @@ services:
     build: ./authentication
     container_name: authentication-service
     ports:
-      - "3001:3000"  
+      - "3001:3001"  
     networks:
       - app-network
 
@@ -32,7 +32,7 @@ services:
     build: ./user
     container_name: user-service
     ports:
-      - "3002:3000"  
+      - "3002:3002"  
     networks:
       - app-network
 
@@ -40,7 +40,7 @@ services:
     build: ./delivery
     container_name: delivery-service
     ports:
-      - "3003:3000"  
+      - "3003:3003"  
     networks:
       - app-network
 
@@ -48,7 +48,7 @@ services:
     build: ./notification
     container_name: notification-service
     ports:
-      - "3004:3000"  
+      - "3004:3004"  
     networks:
       - app-network
 
@@ -56,7 +56,7 @@ services:
     build: ./order
     container_name: order-service
     ports:
-      - "3005:3000"  
+      - "3005:3005"  
     networks:
       - app-network
 
@@ -64,7 +64,7 @@ services:
     build: ./payment
     container_name: payment-service
     ports:
-      - "3006:3000"  
+      - "3006:3006"  
     networks:
       - app-network
 
@@ -72,7 +72,7 @@ services:
     build: ./restaurant
     container_name: restaurant-service
     ports:
-      - "3007:3000"  
+      - "3007:3007"  
     networks:
       - app-network
 
@@ -80,7 +80,7 @@ services:
     build: ./shopping cart
     container_name: shopping-cart-service
     ports:
-      - "3008:3000"  
+      - "3008:3008"  
     networks:
       - app-network
 
