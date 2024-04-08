@@ -1,0 +1,30 @@
+.vignette-carousel {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    position:   relative;
+    margin-bottom: 20px;
+
+    .slick-slide {
+        padding: 0 10px; /* Optional padding to give content some space from the borders */
+    }
+
+
+    .slick-next,
+    .slick-prev {
+        position: absolute;
+        top: 50%;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(232, 232, 232);
+        color: black;
+        border-radius: 50%;
+
+        width: 36px;
+        height: 36px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+}

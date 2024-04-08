@@ -4,6 +4,7 @@
 .main-page {
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100vh;
 
     .left-icons {
@@ -28,21 +29,22 @@
         margin-right: 2vw;
     }
 
-    .container {
-        margin-top: var(--header-height);
-        display: flex;
+    .content {
+        margin-top: calc(var(--header-height) + 2%);
         flex-grow: 1;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 25px;
-        max-width: 600px;
+        display: flex;
+        flex-flow: column;
+        width: 1200px;
+
+
+
+        .title {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
     }
 
-    .some {
-     height: 1000px;
-    }
 
     .backgroundRight,
     .backgroundLeft {
@@ -55,5 +57,19 @@
 
     .backgroundRight {
         background-position: center left;
+    }
+
+    .slick-prev, .slick-next {
+        z-index: 1; /* Ensure arrows are above other content */
+        height: 20px; /* Adjust as needed */
+        width: 20px; /* Adjust as needed */
+        color: black; /* Adjust as needed */
+        /* Add more styles as needed */
+    }
+
+    .slick-prev:before, .slick-next:before {
+        font-size: 20px; /* Adjust arrow size as needed */
+        opacity: 0.75;
+        color: black; /* Adjust as needed */
     }
 }

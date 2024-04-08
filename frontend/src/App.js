@@ -20,6 +20,7 @@ import SuggestionsView from "./Views/ProfileView/SuggestionsView/SuggestionsView
 import StatisticsView from "./Views/ProfileView/StatisticsView/StatisticsView";
 import AccountInformationView from "./Views/ProfileView/AccountInformationView/AccountInformationView";
 import MailConfirmation from "./Views/SignUpView/MailConfirmation";
+import RestaurantView from "./Views/MainView/RestaurantView/RestaurantView";
 
 const App = () => (
     <div>
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/signin" element={<SignInView />}/>
 
             <Route path="/products" element={<ProductView />}/>
+            <Route path="/restaurant/:id" element={<RestaurantView />} />
             <Route path='/commands'  element={<CommandsView/>} />
             <Route path='/invite' element={<InviteView/>} />
             <Route path='/notifications' element={<NotificationsView/>}/>

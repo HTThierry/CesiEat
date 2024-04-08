@@ -1,0 +1,133 @@
+@import url('../../../Styles/Fonts/Fonts.css');
+@import url('../../Components/BackgroundImages/BackgroundImages.css');
+
+.restaurant-view {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    min-height: 100vh;
+
+    .left-icons {
+        position: fixed;
+        left: 2%;
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 20;
+    }
+
+    .right-icons {
+        position: fixed;
+        right: 3vw;
+        display: flex;
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .right-icons > *:not(:last-child) {
+        margin-right: 2vw;
+    }
+
+    .restaurant-profile {
+        margin-top: calc(var(--header-height) + 2%);
+        margin-left: 5%;
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        width: 60vw;
+
+        .restaurant-image {
+            width: 60vw;
+            height: 30vh;
+            border-radius: 50px;
+        }
+
+        .menu {
+            display: flex;
+            flex-flow: column;
+        }
+
+        .restaurant-title {
+            margin-top: 20px;
+            padding-bottom: 10px;
+        }
+        hr {
+            height: 2px;
+            border: none;
+            background-color: black;
+            margin: 30px 0;
+            opacity: 100;
+        }
+
+        .menu-category {
+            display: flex;
+            flex-flow: row;
+            margin-bottom: 30px;
+
+            h2 {
+                width: 40%;
+
+            }
+
+            .items {
+                width: 60%;
+
+                .menu-item {
+                    position: relative;
+                    border-radius: 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: start;
+                    margin-bottom: 20px;
+                    border: 1px solid black;
+
+                    .item-info {
+                        flex-grow: 1;
+                        padding: 20px;
+
+                        .item-price {
+                            color: gray;
+                            margin-bottom: 10px;
+                        }
+                    }
+
+                    .item-pic {
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            width: 200px;
+                            height: 200px;
+                            border-radius: 0 20px 20px 0;
+                            object-fit: cover;
+                        }
+
+                        .add-button {
+                            display: flex;
+                            align-content: center;
+                            justify-content: center;
+                            border: none;
+                            cursor: pointer;
+
+                            width: 30px;
+                            height: 30px;
+                            background: #ddd;
+                            border-radius: 50%;
+
+                            position: absolute;
+                            bottom: 10px;
+                            right: 10px;
+                            z-index: 10;
+
+                            font-size: 25px;
+                            color: black;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,38 @@
+.carousel {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    position:   relative;
+
+    .slick-slider {
+        margin-left: -8px;
+    }
+
+    .slick-track {
+        margin-bottom: 10px;
+    }
+    .slick-next,
+    .slick-prev {
+        position: absolute;
+        top: -45px;
+
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(232, 232, 232);
+        color: black;
+        border-radius: 50%;
+
+        width: 36px;
+        height: 36px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .slick-prev {
+        left: 1050px;
+    }
+    .slick-next {
+        right: 50px;
+    }
+}

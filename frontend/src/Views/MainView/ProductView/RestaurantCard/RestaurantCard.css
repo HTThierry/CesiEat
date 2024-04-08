@@ -1,0 +1,91 @@
+.restaurant-card {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-left: 8px;
+}
+
+.promotion-div {
+    padding: 12px 12px 12px 0;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    display: flex;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.promotion-banner {
+    background: rgb(14, 131, 69);
+    border-radius: 0 24px 24px 0;
+    color: white;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    z-index: 10;
+    padding: 4px 12px;
+    line-height: 16px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.restaurant-image {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.restaurant-info {
+    background-color: white;
+}
+
+.restaurant-name-and-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.restaurant-name {
+    margin: 0;
+    padding: 2px 0;
+    color: #333;
+    line-height: 16px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.restaurant-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(232, 232, 232);
+    flex: 0 0 28px;
+    color: black;
+    border-radius: 50%;
+    font-size: 12px;
+    height: 28px;
+    width: 28px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.restaurant-meta {
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    display: flex;
+    color: grey;
+    font-size: 14px;
+}
+
+.restaurant-delivery-info {
+}
+
+.restaurant-delivery-time {
+}
