@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI)
     console.log('Connected to MongoDB');
 
     app.use(cors({
-      origin: 'http://localhost:3002' 
+      origin: 'http://localhost:3001' 
     }));
     // Base route for API
     app.get(`/api/${ApiVersion}`, (req, res) => {
