@@ -18,6 +18,7 @@
     "react-router-dom": "latest",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.30.2",
+    "slick-carousel": "latest",
     "web-vitals": "latest"
   },
   "scripts": {

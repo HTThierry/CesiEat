@@ -13,12 +13,6 @@ const ContactView = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(accountTypes)
-
-        setAccountInfo(prevInfo => ({
-            ...prevInfo,
-        }));
-
         navigate('/signup/password', { state: { accountInfo: {
                     ...accountInfo,
                     Mail: email,
