@@ -1,0 +1,35 @@
+{
+  "name": "corbeilleapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "nodemon test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.1",
+    "keycloak-connect": "^24.0.1",
+    "mongoose": "^8.2.2",
+    "nodemon": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "grunt-apidoc": "^0.11.0",
+    "typescript": "^5.4.2"
+  }
+}
