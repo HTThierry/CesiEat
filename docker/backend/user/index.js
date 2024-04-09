@@ -21,14 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
     
     if (process.env.EnvironementType == 'dev') {createInitialCollections()};
     
-    app.get('/', (req, res) => {
-      res.send('Hello World from Service!');
-  });
-  
-  app.listen(port, () => {
-      console.log(`Service listening at http://localhost:${port}`);
-  });
-
+    
   })
 
 
@@ -62,6 +55,13 @@ async function createInitialCollections() {
     } catch (error) {
       console.log('Erreur Try ici ====>'+ error);
     }
+  
+
+    
+      
+    
+    
+  
   
     // const messageToCheck = 'Bienvenue sur le système !';
     // const notificationExists = await Notification.findOne({ Message: messageToCheck});
