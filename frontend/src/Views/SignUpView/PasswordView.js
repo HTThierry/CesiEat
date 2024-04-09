@@ -11,7 +11,7 @@ const PasswordView = () => {
 
     const navigate = useNavigate()
     const location = useLocation();
-    const { accountTypes, referralCode, email, phone } = location.state || {};
+    const { accountInfo } = location.state || {};
 
     const validatePassword = (password) => {
         const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -31,7 +31,12 @@ const PasswordView = () => {
             return;
         }
 
-        navigate('/signup/confirmemail', { state: { accountTypes, referralCode, email, phone, password } });
+        accountInfo.PassWord = password;
+
+        navigate('/signup/confirmemail', { state: { accountInfo: {
+                    ...accountInfo,
+                    PassWord: password
+                } } });
     };
 
     // Apply non-scrollable styles to the body element

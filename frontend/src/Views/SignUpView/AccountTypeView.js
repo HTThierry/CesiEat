@@ -14,6 +14,22 @@ const AccountTypeView = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
 
+    const [accountInfo, setAccountInfo] = useState({
+        Client: false,
+        Livreur: false,
+        Restaurateur: false,
+        ReferralCode: '',
+        Mail: '',
+        PhoneNumber: '',
+        PassWord: '',
+        LastName: '',
+        FirstName: '',
+        Age: '',
+        Address: '',
+        City: '',
+        PostalCode: '',
+    });
+
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
         setAccountTypes(prevAccountTypes => {
@@ -36,7 +52,13 @@ const AccountTypeView = () => {
         }
 
         console.log(accountTypes, referralCode);
-        navigate('/signup/contact', { state: { accountTypes, referralCode } });
+        navigate('/signup/contact', { state: { accountInfo: {
+                    ...accountInfo,
+                    Client: accountTypes.Client,
+                    Livreur: accountTypes.Livreur,
+                    Restaurateur: accountTypes.Restaurateur,
+                    ReferralCode: referralCode
+                } } });
     };
 
     return (

@@ -10,7 +10,7 @@ const MailConfirmation = () => {
     const [inputCode, setInputCode] = useState(['', '', '', '']);
     const [verificationCode, setVerificationCode] = useState('');
     const [codeIncorrect, setCodeIncorrect] = useState(false);
-    const { accountTypes, referralCode, email, phone, password } = location.state || {};
+    const { accountInfo } = location.state || {};
 
     const handleChange = (index, event) => {
         const newInputCode = [...inputCode];
@@ -26,7 +26,7 @@ const MailConfirmation = () => {
                 console.log('Code verified successfully!');
 
                 setTimeout(() => {
-                    navigate('/signup/information', { state: { accountTypes, referralCode, email, phone, password } });
+                    navigate('/signup/information', { state: { accountInfo } });
                 }, 500);
             } else {
                 setCodeIncorrect(true);
@@ -59,7 +59,7 @@ const MailConfirmation = () => {
     const generateAndSendCode = () => {
         const code = generateRandomFourDigitCode();
         setVerificationCode(code.toString());
-        sendVerificationEmail(email, code);
+        sendVerificationEmail(accountInfo.Mail, code);
     };
 
     useEffect(() => {

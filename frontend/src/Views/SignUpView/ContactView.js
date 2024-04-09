@@ -9,13 +9,21 @@ const ContactView = () => {
     const [phone, setPhone] = useState('');
 
     const location = useLocation();
-    const { accountTypes, referralCode } = location.state || {};
+    const { accountInfo } = location.state || {};
     const handleSubmit = (e) => {
         e.preventDefault();
 
         console.log(accountTypes)
 
-        navigate('/signup/password', { state: { accountTypes, referralCode, email, phone } });
+        setAccountInfo(prevInfo => ({
+            ...prevInfo,
+        }));
+
+        navigate('/signup/password', { state: { accountInfo: {
+                    ...accountInfo,
+                    Mail: email,
+                    PhoneNumber: phone
+                } } });
     };
 
     useEffect(() => {

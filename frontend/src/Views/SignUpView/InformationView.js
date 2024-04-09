@@ -12,11 +12,20 @@ const InformationView = () => {
     const [postalCode, setPostalCode] = useState('');
 
     const location = useLocation();
-    const { accountTypes, referralCode, email, phone, password } = location.state || {};
+    const { accountInfo } = location.state || {};
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ accountTypes, referralCode, email, phone, password, lastName, firstName, age, address, city, postalCode });
+
+        console.log({ accountInfo: {
+                ...accountInfo,
+                LastName: lastName,
+                FirstName: firstName,
+                Age: age,
+                Address: address,
+                City: city,
+                PostalCode: postalCode
+            } });
     };
 
     // Apply non-scrollable styles to the body element
