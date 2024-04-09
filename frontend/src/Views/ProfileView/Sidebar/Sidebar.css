@@ -1,0 +1,38 @@
+.sidebar {
+    background-color: #fff;
+    color: #000;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: calc(100vh - var(--header-height));
+
+    a, button {
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #000;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        transition: background-color 0.3s, color 0.3s;
+        font-size: 16px;
+    }
+
+    a > *:first-child, button > *:first-child {
+        margin-right: 10px;
+    }
+
+    .active, a:hover, button:hover {
+        background-color: #ccc;
+    }
+
+    .log-out {
+        margin-top: auto;
+    }
+
+    a svg, button svg {
+        font-size: 20px;
+    }
+}

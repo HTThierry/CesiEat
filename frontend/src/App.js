@@ -1,21 +1,56 @@
 import React from 'react';
-import ContactForm from './Sign/ContactForm';
-import PasswordForm from './Sign/PasswordForm';
 import {Routes, Route} from 'react-router-dom';
-import MainContent from './Home/HomePage';
-import SignInForm from "./Sign/SignInForm";
-import InformationForm from "./Sign/InformationForm";
-import AccountTypePage from "./Sign/AccountTypePageCheckbox";
+import ContactView from './Views/SignUpView/ContactView';
+import PasswordView from './Views/SignUpView/PasswordView';
+import HomePage from './Views/HomeView/HomeView';
+import SignInView from "./Views/SignInView/SignInView";
+import InformationView from "./Views/SignUpView/InformationView";
+import AccountTypeView from "./Views/SignUpView/AccountTypeView";
+import ProductView from "./Views/MainView/ProductView/ProductView";
+import CommandsView from "./Views/MainView/CommandsView/CommandsView";
+import InviteView from "./Views/MainView/InviteView/InviteView";
+import NotificationsView from "./Views/MainView/NotificationsView/NotificationsView";
+import MainLayout from "./Views/ProfileView/MainLayout";
+import LogsView from "./Views/ProfileView/LogsView/LogsView";
+import DashboardView from "./Views/ProfileView/DashboardView/DashboardView";
+import UsersView from "./Views/ProfileView/UsersView/UsersView";
+import ApiView from "./Views/ProfileView/ApiView/ApiView";
+import DeliveryView from "./Views/ProfileView/DeliveryView/DeliveryView";
+import SuggestionsView from "./Views/ProfileView/SuggestionsView/SuggestionsView";
+import StatisticsView from "./Views/ProfileView/StatisticsView/StatisticsView";
+import AccountInformationView from "./Views/ProfileView/AccountInformationView/AccountInformationView";
+import MailConfirmation from "./Views/SignUpView/MailConfirmation";
+import RestaurantView from "./Views/MainView/RestaurantView/RestaurantView";
 
 const App = () => (
     <div>
         <Routes>
-            <Route path="/" element={<MainContent />}/>
-            <Route path="/contact" element={<ContactForm />}/>
-            <Route path="/password" element={<PasswordForm />}/>
-            <Route path="/signin" element={<SignInForm />}/>
-            <Route path="/information" element={<InformationForm/>}/>
-            <Route path="/signup" element={<AccountTypePage/>}/>
+            <Route path="/" element={<HomePage />}/>
+
+            <Route path="/signup" element={<AccountTypeView/>}/>
+            <Route path="/signup/contact" element={<ContactView />}/>
+            <Route path="/signup/password" element={<PasswordView />}/>
+            <Route path="/signup/confirmemail" element={<MailConfirmation/>}/>
+            <Route path="/signup/information" element={<InformationView/>}/>
+
+            <Route path="/signin" element={<SignInView />}/>
+
+            <Route path="/products" element={<ProductView />}/>
+            <Route path="/restaurant/:id" element={<RestaurantView />} />
+            <Route path='/commands'  element={<CommandsView/>} />
+            <Route path='/invite' element={<InviteView/>} />
+            <Route path='/notifications' element={<NotificationsView/>}/>
+
+            <Route path='/profile' element={<MainLayout/>}>
+                <Route path='/profile/information' element={<AccountInformationView/>}/>
+                <Route path='/profile/statistics' element={<StatisticsView/>}/>
+                <Route path='/profile/suggestions' element={<SuggestionsView/>}/>
+                <Route path='/profile/delivery' element={<DeliveryView/>}/>
+                <Route path='/profile/api' element={<ApiView/>}/>
+                <Route path='/profile/users' element={<UsersView/>}/>
+                <Route path='/profile/dashboard' element={<DashboardView/>}/>
+                <Route path='/profile/logs' element={<LogsView/>}/>
+            </Route>
         </Routes>
     </div>
 );

@@ -1,0 +1,37 @@
+.backgroundRight,
+.backgroundLeft {
+    position: fixed;
+    bottom: 0;
+    width: 60%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    z-index: -1;
+}
+
+.backgroundLeft {
+    left: 0;
+    background-image: url('img_background_left_food.svg');
+    background-position: center left;
+}
+
+.backgroundRight {
+    right: 0;
+    background-image: url('img_background_right_food.svg');
+    background-position: center right;
+}
+
+@media (max-aspect-ratio: 1.5/1) {
+    .backgroundRight,
+    .backgroundLeft {
+        width: 50%;
+    }
+
+    .backgroundLeft {
+        background-position: center right;
+    }
+
+    .backgroundRight {
+        background-position: center left;
+    }
+}

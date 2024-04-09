@@ -1,0 +1,60 @@
+.deleteAccount {
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+        display: block;
+    }
+    .hide {
+        display: none;
+    }
+
+    .centered-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 30%;
+        height: 30%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: white;
+        z-index: 20;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        font-size: 30px;
+        padding: 40px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10%;
+    }
+
+    button {
+
+        font-size: 25px;
+        width: 35%;
+        cursor: pointer;
+        border-radius: 16px;
+    }
+
+    .whiteButton {
+        color: black;
+        background-color: white;
+        border: 4px solid black;
+    }
+
+    .blackButton {
+        color: white;
+        background-color: black;
+        border: 4px solid black;
+    }
+}

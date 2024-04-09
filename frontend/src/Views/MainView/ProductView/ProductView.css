@@ -1,0 +1,75 @@
+@import url('../../../Styles/Fonts/Fonts.css');
+@import url('../../Components/BackgroundImages/BackgroundImages.css');
+
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    .left-icons {
+        position: fixed;
+        left: 2%;
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 20;
+    }
+
+    .right-icons {
+        position: fixed;
+        right: 3vw;
+        display: flex;
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .right-icons > *:not(:last-child) {
+        margin-right: 2vw;
+    }
+
+    .content {
+        margin-top: calc(var(--header-height) + 2%);
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        width: 1200px;
+
+
+
+        .title {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+    }
+
+
+    .backgroundRight,
+    .backgroundLeft {
+        width: 20%;
+    }
+
+    .backgroundLeft {
+        background-position: center right;
+    }
+
+    .backgroundRight {
+        background-position: center left;
+    }
+
+    .slick-prev, .slick-next {
+        z-index: 1; /* Ensure arrows are above other content */
+        height: 20px; /* Adjust as needed */
+        width: 20px; /* Adjust as needed */
+        color: black; /* Adjust as needed */
+        /* Add more styles as needed */
+    }
+
+    .slick-prev:before, .slick-next:before {
+        font-size: 20px; /* Adjust arrow size as needed */
+        opacity: 0.75;
+        color: black; /* Adjust as needed */
+    }
+}

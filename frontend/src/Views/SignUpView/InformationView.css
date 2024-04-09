@@ -1,0 +1,13 @@
+@import url('../../Styles/Form.css');
+
+.logging {
+    .inputRow {
+        width: 500px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .halfInput {
+        width: 48%;
+    }
+}
