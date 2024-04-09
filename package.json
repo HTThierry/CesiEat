@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "nodemon": "^3.1.0",
-    "winston": "^3.13.0"
-  },
-  "devDependencies": {
-    "apidoc": "^1.2.0"
-  }
-}

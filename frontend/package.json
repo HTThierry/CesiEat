@@ -8,15 +8,13 @@
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
-    "axios": "^1.6.8",
     "bootstrap": "latest",
-    "dotenv": "^16.4.5",
     "react": "latest",
     "react-bootstrap": "latest",
     "react-dom": "latest",
     "react-icons": "^5.0.1",
     "react-router-dom": "latest",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "latest",
     "web-vitals": "latest"
   },
   "scripts": {
