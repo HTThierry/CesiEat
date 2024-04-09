@@ -133,3 +133,6 @@ dist
 .backend\test\API\index_test.js
 
 .idea
+docker/backend/.DS_Store
+docker/.DS_Store
+.DS_Store
