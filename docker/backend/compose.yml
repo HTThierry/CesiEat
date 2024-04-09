@@ -86,9 +86,11 @@ services:
     build: ./payment
     container_name: payment-service
     ports:
-      - "3006:3000"  
+      - "3006:3000"
     networks:
       - app-network
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
 
 # # Restaurant Services:
 #   restaurant-service:

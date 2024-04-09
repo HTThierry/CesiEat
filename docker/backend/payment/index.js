@@ -29,7 +29,7 @@ async function initializeData() {
   }
 }
 console.log('Mongo URI:', process.env.MONGO_URI);
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect('mongodb://localhost:27017/mydatabase', { //hack : mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
