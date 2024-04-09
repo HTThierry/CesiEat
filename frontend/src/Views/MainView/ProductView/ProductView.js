@@ -6,7 +6,6 @@ import { MdOutlineShoppingCart  } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import Footer from "../../Components/Footer/Footer";
 import {Link} from "react-router-dom";
-import RestaurantCard from './RestaurantCard/RestaurantCard';
 import RestaurantCardCarousel from "./RestaurantCardCarousel/RestaurantCardCarousel"
 import VignetteCarousel from "./VignetteCarousel/VignetteCarousel";
 import RestaurantCardGrid from "./RestaurantCardGrid/RestaurantCardGrid";
@@ -15,7 +14,6 @@ import RestaurantCardGrid from "./RestaurantCardGrid/RestaurantCardGrid";
 const ProductView = () => {
     const [restaurants, setRestaurants] = useState([]);
     const restaurantData = [
-
         {
             "displayType": "vignette",
             "items": [
