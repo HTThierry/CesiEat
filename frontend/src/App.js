@@ -20,6 +20,10 @@ import SuggestionsView from "./Views/ProfileView/SuggestionsView/SuggestionsView
 import StatisticsView from "./Views/ProfileView/StatisticsView/StatisticsView";
 import AccountInformationView from "./Views/ProfileView/AccountInformationView/AccountInformationView";
 import MailConfirmation from "./Views/SignUpView/MailConfirmation";
+import MainContent from './Home/HomePage';
+import SignInForm from "./Sign/SignInForm";
+import InformationForm from "./Sign/InformationForm";
+import AccountTypePage from "./Sign/AccountTypePageCheckbox";
 
 const App = () => (
     <div>
