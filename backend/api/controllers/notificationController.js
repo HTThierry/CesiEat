@@ -32,7 +32,7 @@ async function sendVerificationEmail(email, code) {
     }
 }
 
-// Contrôleur pour gérer la requête POST
+
 exports.sendCodeByEmail = async (req, res) => {
     const { email, code } = req.body;
 

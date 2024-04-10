@@ -4,19 +4,35 @@ const crypto = require('crypto');
 const logger = require('../../config/logger');
 const jwt = require('jsonwebtoken');
 const sendVerificationEmail = require('../../subcribers/sendVerificationEmail');
+const { Console } = require('console');
 
 // Create a new user
 
 exports.createUser = async (req, res) => {
   try {
-    const user = new User(req.body);
-
-    //user.emailVerificationToken = crypto.randomBytes(32).toString('hex');
-    //user.emailVerificationTokenExpires = Date.now() + 3600000; 
+    console.log(req.body)
+    const userData = {
+      accountType: {
+        Client: req.body.Client,
+        Livreur: req.body.Livreur,
+        Restaurateur: req.body.Restaurateur,
+      },
+      referralCode: req.body.ReferralCode,
+      email: req.body.Mail,
+      isEmailVerified: true,
+      phone: req.body.PhoneNumber,
+      password: req.body.PassWord,
+      firstName: req.body.FirstName,
+      lastName: req.body.LastName,
+      age: parseInt(req.body.Age),  
+      address: req.body.Address,
+      city: req.body.City,
+      postalCode: parseInt(req.body.PostalCode),  
+    };
+    const user = new User(userData);
 
     const savedUser = await user.save();
-    //sendVerificationEmail(savedUser);
-
+    
     res.status(201).json({ user: savedUser, message: 'User created. Please check your email to verify your account.' });
   } catch (error) {
     logger.error(`Create User Error: ${error.message}`, { endpoint: 'createUser', method: 'POST' });
