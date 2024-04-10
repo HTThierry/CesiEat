@@ -6,7 +6,7 @@ function Vignette({ details }) {
     return (
         <div className="vignette">
             <Link to={`/restaurant/${details.id}`}>
-                <img src={details.imageUrl} alt={details.name} className="image"/>
+                <img src={`data:${details.mime};base64,${details.image}`} alt={details.name} className="image"/>
             </Link>
         </div>
     );
