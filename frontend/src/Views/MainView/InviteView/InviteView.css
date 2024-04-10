@@ -4,15 +4,7 @@
 .invite-page {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-
-    .left-icons {
-        position: fixed;
-        left: 2%;
-        padding-left: 0;
-        padding-right: 0;
-        z-index: 20;
-    }
+    flex-grow: 1;
 
     .container {
         margin-top: var(--header-height);

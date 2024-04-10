@@ -5,34 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    min-height: 100vh;
-
-    .left-icons {
-        position: fixed;
-        left: 2%;
-        padding-left: 0;
-        padding-right: 0;
-        z-index: 20;
-    }
-
-    .right-icons {
-        position: fixed;
-        right: 3vw;
-        display: flex;
-        padding-left: 0;
-        padding-right: 0;
-        justify-content: flex-end;
-        flex: 1;
-    }
-
-    .right-icons > *:not(:last-child) {
-        margin-right: 2vw;
-    }
+    flex-grow: 1;
 
     .restaurant-profile {
         margin-top: calc(var(--header-height) + 2%);
         margin-left: 5%;
-        flex-grow: 1;
         display: flex;
         flex-flow: column;
         width: 60vw;

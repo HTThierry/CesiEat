@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './ProductView.css';
-import Navbar from '../Navbar/Navbar';
-import BlackHeader from "../../Components/Headers/BlackHeader";
-import { MdOutlineShoppingCart  } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import Footer from "../../Components/Footer/Footer";
-import {Link} from "react-router-dom";
 import RestaurantCardCarousel from "./RestaurantCardCarousel/RestaurantCardCarousel"
 import VignetteCarousel from "./VignetteCarousel/VignetteCarousel";
 import RestaurantCardGrid from "./RestaurantCardGrid/RestaurantCardGrid";
@@ -382,26 +376,7 @@ const ProductView = () => {
     };
 
     return (
-        <div className="main-page CesiEatsMedium">
-
-            <BlackHeader
-                leftIcons={
-                    <div className="left-icons">
-                        <Navbar/>
-                    </div>
-                }
-                rightIcons={
-                    <div className="right-icons">
-                        <Link to="/cart">
-                            <MdOutlineShoppingCart color="#fff" size="40px"/>
-                        </Link>
-                        <Link to="/profile/information">
-                            <CgProfile color="#fff" size="40px"/>
-                        </Link>
-                    </div>
-                }
-            />
-
+        <div className="product-view">
             <div className="content">
                 {restaurants.map(section => (
                     <div key={section.title} className="section">
@@ -413,10 +388,7 @@ const ProductView = () => {
 
             <div className="backgroundLeft"></div>
             <div className="backgroundRight"></div>
-
-            <Footer/>
         </div>
-
     );
 };
 

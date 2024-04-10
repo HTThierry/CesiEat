@@ -22,6 +22,7 @@ import AccountInformationView from "./Views/ProfileView/AccountInformationView/A
 import MailConfirmation from "./Views/SignUpView/MailConfirmation";
 import RestaurantView from "./Views/MainView/RestaurantView/RestaurantView";
 import CreateRestaurantVIew from "./Views/MainView/CreateRestaurantView/CreateRestaurantVIew";
+import MainView from "./Views/MainView/MainView";
 
 const App = () => (
     <div>
@@ -36,12 +37,14 @@ const App = () => (
 
             <Route path="/signin" element={<SignInView />}/>
 
-            <Route path="/products" element={<ProductView />}/>
-            <Route path="/restaurant/:id" element={<RestaurantView />} />
-            <Route path="/createrestaurant/:id" element={<CreateRestaurantVIew />} />
-            <Route path='/commands'  element={<CommandsView/>} />
-            <Route path='/invite' element={<InviteView/>} />
-            <Route path='/notifications' element={<NotificationsView/>}/>
+            <Route path='/' element={<MainView/>}>
+                <Route path="/products" element={<ProductView />}/>
+                <Route path="/restaurant/:id" element={<RestaurantView />} />
+                <Route path="/createrestaurant/:id" element={<CreateRestaurantVIew />} />
+                <Route path='/commands'  element={<CommandsView/>} />
+                <Route path='/invite' element={<InviteView/>} />
+                <Route path='/notifications' element={<NotificationsView/>}/>
+            </Route>
 
             <Route path='/profile' element={<MainLayout/>}>
                 <Route path='/profile/information' element={<AccountInformationView/>}/>
