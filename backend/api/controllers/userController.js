@@ -154,8 +154,8 @@ exports.login = async (req, res) => {
 
           // cookie config
           const cookieOptions = {
-              httpOnly: true,
-              secure: true,
+              httpOnly: false,
+              secure: false,
               sameSite: 'Strict',
               expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
           };

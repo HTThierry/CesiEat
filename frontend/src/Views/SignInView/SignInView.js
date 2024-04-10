@@ -26,7 +26,7 @@ const SignInView = () => {
         try {
             const response = await axios.post(apiUrl, { email, password });
             console.log('Login successful:', response.data);
-            navigate('/products');
+            navigate('/');
 
         } catch (error) {
             if (error.response && error.response.data) {

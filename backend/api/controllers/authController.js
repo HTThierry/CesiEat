@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../../subcribers/storeRevokedToken'); 
+const User = require('../../models/userModel');
 const logger = require('../../config/logger'); 
 const express = require('express');
 const router = express.Router();
-const storeRevokedToken = require('../../models/userModel')
+const storeRevokedToken = require('../../subcribers/storeRevokedToken.js');
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -41,6 +41,7 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "An error occurred during the login process" });
   }
 };
+
 exports.authenticate = (req, res, next) => {
     let token = req.headers["authorization"];
     if (!token) {
@@ -87,35 +88,19 @@ exports.refreshToken = (req, res) => {
   });
 };
   
-// exports.logout = (req, res) => {
-//   // Assuming the refresh token is stored in a cookie called 'refreshToken'
-//   if (req.cookies['refreshToken']) {
-//       // Clear the refresh token cookie
-//       const cookieOptions = {
-//           httpOnly: true,
-//           secure: process.env.NODE_ENV === 'production',
-//           sameSite: 'Strict',
-//           expires: new Date(0) // Set the cookie to expire immediately
-//       };
-//       res.cookie('refreshToken', '', cookieOptions);
-//   }
-
-  
-
-//   logger.info('User logged out successfully');
-//   res.status(200).json({ message: "You have been logged out successfully" });
-// };
 
 
 exports.logout = async (req, res) => {
   try {
-      const { refreshToken } = req.cookies['refreshToken'];
+    const refreshToken = req.cookies;
+    console.log(refreshToken);  
       if (!refreshToken) {
+        console.log(refreshToken)
           return res.status(400).json({ message: "Refresh token is required" });
       }
 
       // Révoquer et stocker le refreshToken
-      storeRevokedToken(refreshToken);
+      await storeRevokedToken(refreshToken);
 
       // Vous pouvez également vouloir effacer le refreshToken du cookie ou du stockage du client
       res.clearCookie('refreshToken'); // Si le token est stocké dans un cookie

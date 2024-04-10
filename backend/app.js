@@ -15,7 +15,7 @@ const front_PORT = process.env.Front_PORT || 3002
 const mongoose = require('mongoose');
 
 app.use(cookieParser());
-app.use(express.json()); // For parsing application/json
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -24,7 +24,8 @@ mongoose.connect(process.env.MONGODB_URI)
     console.log('Connected to MongoDB');
     initProducts();
     app.use(cors({
-      origin: 'http://localhost:3001' 
+      origin: 'http://localhost:3001',
+      credentials: true
     }));
 
     // Base route for API
