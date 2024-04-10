@@ -2,7 +2,6 @@ import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import ContactView from './Views/SignUpView/ContactView';
 import PasswordView from './Views/SignUpView/PasswordView';
-import HomePage from './Views/HomeView/HomeView';
 import SignInView from "./Views/SignInView/SignInView";
 import InformationView from "./Views/SignUpView/InformationView";
 import AccountTypeView from "./Views/SignUpView/AccountTypeView";
@@ -22,12 +21,11 @@ import AccountInformationView from "./Views/ProfileView/AccountInformationView/A
 import MailConfirmation from "./Views/SignUpView/MailConfirmation";
 import RestaurantView from "./Views/MainView/RestaurantView/RestaurantView";
 import CreateRestaurantVIew from "./Views/MainView/CreateRestaurantView/CreateRestaurantVIew";
-import MainView from "./Views/MainView/MainView";
+import HomeView from "./Views/HomeView/HomeView";
 
 const App = () => (
     <div>
         <Routes>
-            <Route path="/" element={<HomePage />}/>
 
             <Route path="/signup" element={<AccountTypeView/>}/>
             <Route path="/signup/contact" element={<ContactView />}/>
@@ -37,13 +35,14 @@ const App = () => (
 
             <Route path="/signin" element={<SignInView />}/>
 
-            <Route path='/' element={<MainView/>}>
-                <Route path="/products" element={<ProductView />}/>
+            <Route path='/' element={<HomeView/>}>
+                <Route index element={<ProductView />} />
                 <Route path="/restaurant/:id" element={<RestaurantView />} />
-                <Route path="/createrestaurant/:id" element={<CreateRestaurantVIew />} />
+                <Route path="/createrestaurant" element={<CreateRestaurantVIew />} />
                 <Route path='/commands'  element={<CommandsView/>} />
                 <Route path='/invite' element={<InviteView/>} />
                 <Route path='/notifications' element={<NotificationsView/>}/>
+
             </Route>
 
             <Route path='/profile' element={<MainLayout/>}>

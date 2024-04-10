@@ -4,11 +4,12 @@ import { IoHomeOutline } from "react-icons/io5";
 import { FaRegBookmark } from "react-icons/fa";
 import { FiGift } from "react-icons/fi";
 import { FaBell } from "react-icons/fa";
+import { MdAddBusiness } from "react-icons/md";
 
 export const NavbarData = [
     {
-        title: 'Produits',
-        path: '/products',
+        title: 'Acceuil',
+        path: '/',
         icon: <IoHomeOutline size="25px" color="#000"/>,
         cName: 'nav-text'
     },
@@ -16,6 +17,12 @@ export const NavbarData = [
         title: 'Commandes',
         path: '/commands',
         icon: <FaRegBookmark size="25px" color="#000"/>,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Créer un produit',
+        path: '/createrestaurant',
+        icon: <MdAddBusiness size="25px" color="#000"/>,
         cName: 'nav-text'
     },
     {
