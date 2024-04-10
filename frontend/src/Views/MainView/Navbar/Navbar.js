@@ -7,7 +7,7 @@ import { IconContext } from 'react-icons';
 import defaultProfilePic from "../../../Images/default.jpeg";
 
 function Navbar() {
-    const userType = "Client"
+    const userType = "Restaurateur"
     const [profilePic] = useState(defaultProfilePic);
     const [sidebar, setSidebar] = useState(false);
 
