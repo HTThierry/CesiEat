@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./RestaurantView.css"
-import {Link, useParams} from 'react-router-dom';
-import Navbar from "../Navbar/Navbar";
-import {MdOutlineShoppingCart} from "react-icons/md";
-import {CgProfile} from "react-icons/cg";
-import BlackHeader from "../../Components/Headers/BlackHeader";
-import Footer from "../../Components/Footer/Footer";
+import {useParams} from 'react-router-dom';
 
-function RestaurantView() {
+const RestaurantView = () => {
     const { id } = useParams();
     const [restaurant, setRestaurant] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -69,25 +64,7 @@ function RestaurantView() {
     if (!restaurantData) return <p>Restaurant not found.</p>;
 
     return (
-        <div className="restaurant-view CesiEatsMedium">
-            <BlackHeader
-                leftIcons={
-                    <div className="left-icons">
-                        <Navbar/>
-                    </div>
-                }
-                rightIcons={
-                    <div className="right-icons">
-                        <Link to="/cart">
-                            <MdOutlineShoppingCart color="#fff" size="40px"/>
-                        </Link>
-                        <Link to="/profile/information">
-                            <CgProfile color="#fff" size="40px"/>
-                        </Link>
-                    </div>
-                }
-            />
-
+        <div className="restaurant-view">
             <div className="restaurant-profile">
                 <img src={photo} alt={title} className="restaurant-image"/>
                 <h1 className="restaurant-title">{title}</h1>
@@ -118,8 +95,6 @@ function RestaurantView() {
             </div>
 
             <div className="backgroundRight"></div>
-
-            <Footer/>
         </div>
 
     );

@@ -1,8 +1,5 @@
 import React from 'react';
 import './NotificationsView.css';
-import BlackHeader from "../../Components/Headers/BlackHeader";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../Navbar/Navbar";
 import { FaBell } from "react-icons/fa";
 
 const NotificationsView = () => {
@@ -33,14 +30,7 @@ const NotificationsView = () => {
 */
 
     return (
-        <div className="notifications-view CesiEatsMedium">
-            <BlackHeader
-                leftIcons={
-                    <div className="left-icons">
-                        <Navbar/>
-                    </div>
-                }
-            />
+        <div className="notifications-view">
             <div className="container">
                 <div className="title">
                     <FaBell/> Notifications :
@@ -53,7 +43,6 @@ const NotificationsView = () => {
                 ))}
             </div>
             <div className="backgroundRight"></div>
-            <Footer/>
         </div>
 
     );

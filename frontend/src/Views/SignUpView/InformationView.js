@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './InformationView.css';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import BlackHeader from "../Components/Headers/BlackHeader";
+import Popup_Connection from "./Popup_connexion.png";
 
 const InformationView = () => {
+
+    const navigate = useNavigate();
     const [lastName, setLastName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [age, setAge] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [postalCode, setPostalCode] = useState('');
+    const [isCreated, setIsCreated] = useState(false);
 
     const location = useLocation();
     const { accountInfo } = location.state || {};
@@ -31,6 +35,11 @@ const InformationView = () => {
             .then(data => {
                 console.log('Account created successfully:', data);
 
+                setIsCreated(!isCreated);
+
+                setTimeout(() => {
+                    navigate('/');
+                }, 1500);
 
             })
             .catch((error) => {
@@ -41,7 +50,6 @@ const InformationView = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
 
         const completeAccountInfo = {
             ...accountInfo,
@@ -67,6 +75,10 @@ const InformationView = () => {
             <BlackHeader/>
             <div className="backgroundLeft"></div>
             <div className="backgroundRight"></div>
+
+            <div className={isCreated ? 'overlay' : 'hide-overlay'}></div>
+            <img src={Popup_Connection} className={isCreated ? "popup" : 'hide'} alt="Popup_connexion"/>
+
             <form onSubmit={handleSubmit} className="container" autoComplete="on">
                 <h2>Indiquez vos informations :</h2>
                 <input

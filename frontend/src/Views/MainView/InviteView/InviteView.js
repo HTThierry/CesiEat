@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import './InviteView.css';
-import BlackHeader from "../../Components/Headers/BlackHeader";
-import Footer from "../../Components/Footer/Footer";
 import { FaCopy, FaRegCopy } from 'react-icons/fa';
-import Navbar from "../Navbar/Navbar";
 
 const InviteView = () => {
 
@@ -49,13 +46,6 @@ const InviteView = () => {
 
     return (
         <div className="invite-page CesiEatsMedium">
-            <BlackHeader
-                leftIcons={
-                    <div className="left-icons">
-                        <Navbar/>
-                    </div>
-                }
-            />
             <div className="container">
                 <h2>Votre/vos code(s) de parrainage :</h2>
                 <div>
@@ -79,7 +69,6 @@ const InviteView = () => {
             </div>
             <div className="backgroundLeft"></div>
             <div className="backgroundRight"></div>
-            <Footer/>
         </div>
 
     );

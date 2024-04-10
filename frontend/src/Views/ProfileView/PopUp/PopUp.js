@@ -4,7 +4,7 @@ import './PopUp.css';
 const PopUp = ({ text, isOpen, onConfirm, onCancel }) => {
 
     return (
-        <div className="deleteAccount">
+        <div className="popup">
             <div className={isOpen ? 'overlay' : 'hide-overlay'} onClick={onCancel}></div>
             <div className={isOpen ? "centered-container" : 'hide'}>
                 <p>{text}</p>

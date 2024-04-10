@@ -1,36 +1,15 @@
 import React from 'react';
-import './HomeView.css'
-import Footer from '../Components/Footer/Footer';
-import TransparentHeader from "../Components/Headers/TransparentHeader";
-import {Link} from "react-router-dom";
+import LandingView from "./LandingView";
+import MainView from "../MainView/MainView";
 
-function MainContent() {
-    return (
-        <main>
-            <TransparentHeader>
-                <div className="buttons">
-                    <Link to="/signin">
-                        <button className="sign-in-button">Connexion</button>
-                    </Link>
-                    <Link to="/signup">
-                        <button className="sign-up-button">Inscription</button>
-                    </Link>
-                </div>
-            </TransparentHeader>
-            <div>
-                <style>{'body { background-color: rgba(250 , 146 , 105); }'}</style>
-                <div className="backgroundLeft"></div>
-                <div className="backgroundRight"></div>
-            </div>
-            <div style={{
-                position: 'fixed',
-                bottom: '0',
-                width: '100%'}}>
-                <Footer/>
-            </div>
+const HomeView = () => {
 
-        </main>
-    );
-}
+    const token = true;
+    if (token) {
+        return <MainView />;
+    } else {
+        return <LandingView />;
+    }
+};
 
-export default MainContent;
+export default HomeView;

@@ -1,8 +1,5 @@
 import React from "react";
 import "./CommandsView.css"
-import BlackHeader from "../../Components/Headers/BlackHeader";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
 import {FaBell } from "react-icons/fa";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import {Link} from "react-router-dom";
@@ -36,13 +33,6 @@ const CommandsView = () => {
 
     return (
         <div className="commands-view CesiEatsMedium">
-            <BlackHeader
-                leftIcons={
-                    <div className="left-icons">
-                        <Navbar/>
-                    </div>
-                }
-            />
             <div className="container">
                 <div className="title">
                     <FaBell/> Historique de commandes :
@@ -60,7 +50,6 @@ const CommandsView = () => {
                 ))}
             </div>
             <div className="backgroundRight"></div>
-            <Footer/>
         </div>
 
     );

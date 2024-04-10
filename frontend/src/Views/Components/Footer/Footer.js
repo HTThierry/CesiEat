@@ -43,10 +43,10 @@ export default function Footer() {
                         </a>
                     </Col>
                     <Col className="conditions">
-                        <a href="/frontend/public" className="text-decoration-none text-light mr-7 text">Politique de confidentialité</a>
-                        <a href="/frontend/public" className="text-decoration-none text-light mr-7 text">Conditions</a>
-                        <a href="/frontend/public" className="text-decoration-none text-light mr-7 text">Tarifs</a>
-                        <a href="/frontend/public" className="text-decoration-none text-light text">Ne vendez pas et ne partagez pas mes informations personnelles</a>
+                        <a href="https://www.google.com" className="text-decoration-none text-light mr-7 text">Politique de confidentialité</a>
+                        <a href="https://www.google.com" className="text-decoration-none text-light mr-7 text">Conditions</a>
+                        <a href="https://www.google.com" className="text-decoration-none text-light mr-7 text">Tarifs</a>
+                        <a href="https://www.google.com" className="text-decoration-none text-light text">Ne vendez pas et ne partagez pas mes informations personnelles</a>
                     </Col>
                 </Row>
 
