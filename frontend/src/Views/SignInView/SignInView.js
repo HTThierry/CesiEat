@@ -1,17 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import '../../Styles/Form.css';
 import BlackHeader from "../Components/Headers/BlackHeader";
+
+import axios from 'axios';
+import {useNavigate} from "react-router-dom";
+const API_VERSION = process.env.REACT_APP_API_VERSION;
+const API_URL = `http://localhost:3000`;
+
 const SignInView = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         if (email === password) {
             setErrorMessage('E-mail ou mot de passe incorrect');
 
+        }
+
+        const apiUrl = `${API_URL}/api/${API_VERSION}/auth/login`;
+
+        try {
+            const response = await axios.post(apiUrl, { email, password });
+            console.log('Login successful:', response.data);
+            navigate('/products');
+
+        } catch (error) {
+            if (error.response && error.response.data) {
+                setErrorMessage(error.response.data.message || 'Error logging in');
+            } else {
+                setErrorMessage('An error occurred during login');
+            }
         }
     };
 

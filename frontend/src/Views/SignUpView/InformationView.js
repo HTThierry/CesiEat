@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './InformationView.css';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import BlackHeader from "../Components/Headers/BlackHeader";
 
 const InformationView = () => {
+    const navigate = useNavigate();
     const [lastName, setLastName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [age, setAge] = useState('');
@@ -30,7 +31,7 @@ const InformationView = () => {
             })
             .then(data => {
                 console.log('Account created successfully:', data);
-
+                navigate('/signin');
 
             })
             .catch((error) => {
