@@ -3,23 +3,26 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-
   accountType: {
-      type: String,
-      required: true,
-      enum: ["Client",
-        "Livreur",
-        "Restaurateur"] 
+      Client: { type: Boolean, default: false },
+      Livreur: { type: Boolean, default: false },
+      Restaurateur: { type: Boolean, default: false }
   },
   referralCode: {
       type: String,
       default: null
   },
-  ownReferralCode: {
-      type: String,
-      default: () => {
-          return Math.random().toString(36).substring(2, 10);
-      }
+  clientReferralCode: {
+    type: String,
+    default: ''
+  },
+  livreurReferralCode: {
+    type: String,
+    default: ''
+  },
+  restaurateurReferralCode: {
+    type: String,
+    default: ''
   },
   firstName: {
     type: String,
@@ -31,7 +34,6 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
-  
   password: {
     type: String,
     required: true
@@ -40,7 +42,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
     match: /.+\@.+\..+/,
-    //unique: false,
     trim: true,
     lowercase: true
   },
@@ -84,11 +85,23 @@ const userSchema = new Schema({
   resetPasswordExpires: Date
 }, { timestamps: true });
 
-// Pre-save hook to hash password before saving
-userSchema.pre('save', async function (next) {
-  // Only hash the password if it has been modified (or is new)
-  if (!this.isModified('password')) return next();
 
+
+
+userSchema.pre('save', async function (next) {
+  if (this.isModified('accountType')) {
+    if (this.accountType.Client) {
+      this.clientReferralCode = 'cl_' + Math.random().toString(36).substring(2, 8);
+    }
+    if (this.accountType.Livreur) {
+      this.livreurReferralCode = 'liv_' + Math.random().toString(36).substring(2, 8);
+    }
+    if (this.accountType.Restaurateur) {
+      this.restaurateurReferralCode = 'rest_' + Math.random().toString(36).substring(2, 8);
+    }
+  }
+
+  if (!this.isModified('password')) return next();
   try {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
@@ -97,8 +110,5 @@ userSchema.pre('save', async function (next) {
     next(error);
   }
 });
-
-// Creating a compound unique index
-userSchema.index({ email: 1, accountType: 1 }, { unique: true });
 
 module.exports = mongoose.model('userModel', userSchema);

@@ -51,6 +51,10 @@ rule_files:
 - /etc/config/rules
 - /etc/config/alerts
 scrape_configs:
+- job_name: 'authentication-service'
+    static_configs:
+      - targets: 
+        - localhost:3001
 - job_name: prometheus
   honor_timestamps: true
   track_timestamps_staleness: false

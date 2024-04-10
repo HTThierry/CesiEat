@@ -20,13 +20,15 @@ const PasswordView = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
+        console.log("password:", password,"confirmPassword:", confirmPassword)
         if (password !== confirmPassword) {
             setErrorMessage('Les mots de passe ne correspondent pas.');
+            console.log("password:", password,"confirmPassword:", confirmPassword)
             return;
         }
 
         if (!validatePassword(password)) {
+            console.log("password:", password,"confirmPassword:", confirmPassword)
             setErrorMessage('Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.');
             return;
         }
