@@ -96,7 +96,7 @@ function RestaurantView() {
                 <div className="menu">
                     {Object.entries(menu).map(([category, items]) => (
                         <div key={category} className="menu-category">
-                            <h2>{category.toUpperCase()}</h2>
+                            <h2 className="category-header">{category.toUpperCase()}</h2>
                             <div className="items">
                                 {items.map((item) => (
                                     <div key={item.name} className="menu-item">
@@ -106,7 +106,7 @@ function RestaurantView() {
                                             <p className="item-description">{item.description}</p>
                                         </div>
                                         <div className="item-pic">
-                                            <img src={item.pic} alt={item.name}/>
+                                            <img className="item-image" src={item.pic} alt={item.name}/>
                                             <button className="add-button">+</button>
                                         </div>
                                     </div>

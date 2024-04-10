@@ -21,6 +21,7 @@ import StatisticsView from "./Views/ProfileView/StatisticsView/StatisticsView";
 import AccountInformationView from "./Views/ProfileView/AccountInformationView/AccountInformationView";
 import MailConfirmation from "./Views/SignUpView/MailConfirmation";
 import RestaurantView from "./Views/MainView/RestaurantView/RestaurantView";
+import CreateRestaurantVIew from "./Views/MainView/CreateRestaurantView/CreateRestaurantVIew";
 
 const App = () => (
     <div>
@@ -37,6 +38,7 @@ const App = () => (
 
             <Route path="/products" element={<ProductView />}/>
             <Route path="/restaurant/:id" element={<RestaurantView />} />
+            <Route path="/createrestaurant/:id" element={<CreateRestaurantVIew />} />
             <Route path='/commands'  element={<CommandsView/>} />
             <Route path='/invite' element={<InviteView/>} />
             <Route path='/notifications' element={<NotificationsView/>}/>
