@@ -14,10 +14,9 @@ const isAuthenticated = (requiredUserTypes) => {
 
 // Protected Route Component
 const ProtectedRoute = ({ children, requiredUserTypes, ...rest }) => {
-    if (1===1) {
+    if (1 === 1) {
         return children;
     } else {
-
         return <Navigate to="/signin" replace />;
     }
 };
