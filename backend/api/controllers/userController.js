@@ -11,11 +11,11 @@ exports.createUser = async (req, res) => {
   try {
     const user = new User(req.body);
 
-    user.emailVerificationToken = crypto.randomBytes(32).toString('hex');
-    user.emailVerificationTokenExpires = Date.now() + 3600000; 
+    //user.emailVerificationToken = crypto.randomBytes(32).toString('hex');
+    //user.emailVerificationTokenExpires = Date.now() + 3600000; 
 
     const savedUser = await user.save();
-    sendVerificationEmail(savedUser);
+    //sendVerificationEmail(savedUser);
 
     res.status(201).json({ user: savedUser, message: 'User created. Please check your email to verify your account.' });
   } catch (error) {
