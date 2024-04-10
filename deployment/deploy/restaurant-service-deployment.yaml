@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: restaurant-service
-        image: mamadou7120/restaurant-servicee:latest 
+        image: mamadou7120/restaurant-service:latest 
         ports:
         - containerPort: 3007

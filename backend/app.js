@@ -4,7 +4,7 @@ const userRoutes = require('./api/routes/userRoutes');
 const app = express();
 const cors = require('cors');
 authRoutes = require('./api/routes/authRoutes');
-
+notificationRoutes = require('./api/routes/notificationRoutes');
 const ApiVersion = process.env.API_VERSION || 'v1'; // Use API version from environment variables or default to 'v1'
 const PORT = process.env.API_PORT || 3000; 
 const front_PORT = process.env.Front_PORT || 3002
@@ -30,6 +30,7 @@ mongoose.connect(process.env.MONGODB_URI)
     // User routes
     app.use(`/api/${ApiVersion}/users`, userRoutes);
     app.use(`/api/${ApiVersion}/auth`, authRoutes);
+    app.use(`/api/${ApiVersion}/notifications`, notificationRoutes);
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}.`);
