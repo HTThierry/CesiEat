@@ -1,44 +1,18 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-
-const productSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    discount: {
-        type: Number
-    },
-    desc: {
-        type: String
-    },
-    img: {
-        type: String,
-    },
-    category: {
+const productSchema = new mongoose.Schema({
+    name: String,
+    restaurant: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'CategoryModel',
+        ref: 'Restaurant'
     },
-    reviews: {
-        type: [{
-            user: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'UserModel'},
-            rating:  {type: Number, min: 1, max: 5 },
-            body: {type: String},
-
-        }]
-    },
-    Rating : { 
-        type: Number
-    }
-
+    desc: String,
+    mime: String,
+    image: String,
+    categories: String,
+    discount: Number,
 });
+
 productSchema.virtual('averageRating').get(function () {
     if (this.reviews.length === 0) {
       return 0;
@@ -48,4 +22,4 @@ productSchema.virtual('averageRating').get(function () {
   });
   
 
-module.exports = mongoose.model('ProductModel', productSchema);
+module.exports = mongoose.model('Products', productSchema);

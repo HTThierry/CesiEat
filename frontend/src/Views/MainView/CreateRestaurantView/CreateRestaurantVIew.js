@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
 import "./CreateRestaurantVIew.css";
-import { Link } from 'react-router-dom';
-import Navbar from "../Navbar/Navbar";
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import BlackHeader from "../../Components/Headers/BlackHeader";
-import Footer from "../../Components/Footer/Footer";
 import defaultPic from "./Default.png";
 
 function CreateRestaurantView() {
@@ -121,24 +115,6 @@ function CreateRestaurantView() {
 
     return (
         <div className="create-restaurant-view CesiEatsMedium">
-            <BlackHeader
-                leftIcons={
-                    <div className="left-icons">
-                        <Navbar/>
-                    </div>
-                }
-                rightIcons={
-                    <div className="right-icons">
-                        <Link to="/cart">
-                            <MdOutlineShoppingCart color="#fff" size="40px"/>
-                        </Link>
-                        <Link to="/profile/information">
-                            <CgProfile color="#fff" size="40px"/>
-                        </Link>
-                    </div>
-                }
-            />
-
             <div className="restaurant-profile">
 
                 <div className="restaurant-image-input">
@@ -229,7 +205,6 @@ function CreateRestaurantView() {
             </div>
             <div className="backgroundRight"></div>
 
-            <Footer/>
         </div>
     );
 }

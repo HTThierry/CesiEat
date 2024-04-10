@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { FaBars } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import { NavbarData } from './NavbarData';
 import { IconContext } from 'react-icons';
 import defaultProfilePic from "../../../Images/default.jpeg";
@@ -36,10 +36,10 @@ function Navbar() {
                         {NavbarData.map((item, index) => {
                             return (
                                 <div key={index} className={item.cName}>
-                                <Link to={item.path}>
+                                <NavLink to={item.path} onClick={closeSidebar}>
                                         {item.icon}
                                         <span>{item.title}</span>
-                                    </Link>
+                                    </NavLink>
                                 </div>
                             );
                         })}

@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../../models/userModel'); 
+const User = require('../../subcribers/storeRevokedToken'); 
 const logger = require('../../config/logger'); 
 const express = require('express');
 const router = express.Router();
-
+const storeRevokedToken = require('../../models/userModel')
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -62,49 +62,70 @@ exports.authenticate = (req, res, next) => {
     });
   };
 
-  exports.refreshToken = (req, res) => {
-    const token = req.cookies.refreshToken; // Assuming the refresh token is sent in cookie
-  
-    if (!token) {
-      logger.warn("Refresh token is required");
-      return res.status(401).json({ message: "Refresh token is required" });
-    }
-  
-    jwt.verify(token, process.env.REFRESH_JWT_KEY, (err, decoded) => {
-      if (err) {
-        logger.error("Invalid Refresh Token");
-        return res.status(401).json({ message: "Invalid Refresh Token" });
-      }
-  
-      const accessToken = jwt.sign(
-        { userId: decoded.userId, email: decoded.email, accountType: decoded.accountType },
-        process.env.ACCESS_JWT_KEY,
-        { expiresIn: '15m' }
-      );
-  
-      logger.info(`Access token refreshed for user: ${decoded.email}`);
-      res.status(200).json({ accessToken });
-    });
-  };
-  
-  exports.logout = (req, res) => {
-    // Assuming the refresh token is stored in a cookie called 'refreshToken'
-    if (req.cookies['refreshToken']) {
-        // Clear the refresh token cookie
-        const cookieOptions = {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'Strict',
-            expires: new Date(0) // Set the cookie to expire immediately
-        };
-        res.cookie('refreshToken', '', cookieOptions);
+exports.refreshToken = (req, res) => {
+  const token = req.cookies.refreshToken; // Assuming the refresh token is sent in cookie
+
+  if (!token) {
+    logger.warn("Refresh token is required");
+    return res.status(401).json({ message: "Refresh token is required" });
+  }
+
+  jwt.verify(token, process.env.REFRESH_JWT_KEY, (err, decoded) => {
+    if (err) {
+      logger.error("Invalid Refresh Token");
+      return res.status(401).json({ message: "Invalid Refresh Token" });
     }
 
-    // You can perform other session cleanup tasks here if needed
+    const accessToken = jwt.sign(
+      { userId: decoded.userId, email: decoded.email, accountType: decoded.accountType },
+      process.env.ACCESS_JWT_KEY,
+      { expiresIn: '15m' }
+    );
 
-    logger.info('User logged out successfully');
-    res.status(200).json({ message: "You have been logged out successfully" });
+    logger.info(`Access token refreshed for user: ${decoded.email}`);
+    res.status(200).json({ accessToken });
+  });
 };
+  
+// exports.logout = (req, res) => {
+//   // Assuming the refresh token is stored in a cookie called 'refreshToken'
+//   if (req.cookies['refreshToken']) {
+//       // Clear the refresh token cookie
+//       const cookieOptions = {
+//           httpOnly: true,
+//           secure: process.env.NODE_ENV === 'production',
+//           sameSite: 'Strict',
+//           expires: new Date(0) // Set the cookie to expire immediately
+//       };
+//       res.cookie('refreshToken', '', cookieOptions);
+//   }
+
+  
+
+//   logger.info('User logged out successfully');
+//   res.status(200).json({ message: "You have been logged out successfully" });
+// };
+
+
+exports.logout = async (req, res) => {
+  try {
+      const { refreshToken } = req.cookies['refreshToken'];
+      if (!refreshToken) {
+          return res.status(400).json({ message: "Refresh token is required" });
+      }
+
+      // Révoquer et stocker le refreshToken
+      storeRevokedToken(refreshToken);
+
+      // Vous pouvez également vouloir effacer le refreshToken du cookie ou du stockage du client
+      res.clearCookie('refreshToken'); // Si le token est stocké dans un cookie
+      res.status(200).json({ message: "Successfully logged out" });
+  } catch (error) {
+      console.error("Logout Error:", error);
+      res.status(500).json({ message: "An error occurred during the logout process" });
+  }
+};
+
 
 router.get('/verify-email/:token', async (req, res) => {
   const user = await User.findOne({

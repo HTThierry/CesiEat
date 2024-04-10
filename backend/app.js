@@ -1,16 +1,20 @@
 const express = require('express');
 require('dotenv').config({ path: './config/.env' }); // Load environment variables from the config directory
 const userRoutes = require('./api/routes/userRoutes');
+const cookieParser = require('cookie-parser');
 const app = express();
 const cors = require('cors');
+const initProducts = require('./init-mongo/init-mongo');
 authRoutes = require('./api/routes/authRoutes');
 notificationRoutes = require('./api/routes/notificationRoutes');
+const restaurantRoutes = require('./api/routes/restaurantRoutes');
+
 const ApiVersion = process.env.API_VERSION || 'v1'; // Use API version from environment variables or default to 'v1'
 const PORT = process.env.API_PORT || 3000; 
 const front_PORT = process.env.Front_PORT || 3002
 const mongoose = require('mongoose');
 
-
+app.use(cookieParser());
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,10 +22,11 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
-
+    initProducts();
     app.use(cors({
       origin: 'http://localhost:3001' 
     }));
+
     // Base route for API
     app.get(`/api/${ApiVersion}`, (req, res) => {
       res.send(`Welcome to the API version ${ApiVersion}`);
@@ -31,6 +36,8 @@ mongoose.connect(process.env.MONGODB_URI)
     app.use(`/api/${ApiVersion}/users`, userRoutes);
     app.use(`/api/${ApiVersion}/auth`, authRoutes);
     app.use(`/api/${ApiVersion}/notifications`, notificationRoutes);
+    app.use(`/api/${ApiVersion}/restaurants`, restaurantRoutes);
+    
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}.`);
