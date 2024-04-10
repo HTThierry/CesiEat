@@ -39,27 +39,33 @@ const MailConfirmation = () => {
     };
 
     const sendVerificationEmail = (email, verificationCode) => {
-
-        fetch('/send-verification-email', {
+        fetch('http://localhost:3000/api/v1/notifications/sendCodeByEmail', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email, code: verificationCode }),
         })
-            .then(response => response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
             .then(data => {
-                console.log(data);
+                console.log('Email sent successfully:', data);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     };
 
+
     const generateAndSendCode = () => {
         const code = generateRandomFourDigitCode();
         setVerificationCode(code.toString());
         sendVerificationEmail(accountInfo.Mail, code);
+        //console.log(accountInfo.Mail, code);
     };
 
     useEffect(() => {

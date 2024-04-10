@@ -14,19 +14,48 @@ const InformationView = () => {
     const location = useLocation();
     const { accountInfo } = location.state || {};
 
+    const createAccount = (accountDetails) => {
+        fetch('http://localhost:3000/api/v1/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(accountDetails),
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                console.log('Account created successfully:', data);
+
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log({ accountInfo: {
-                ...accountInfo,
-                LastName: lastName,
-                FirstName: firstName,
-                Age: age,
-                Address: address,
-                City: city,
-                PostalCode: postalCode
-            } });
+
+        const completeAccountInfo = {
+            ...accountInfo,
+            LastName: lastName,
+            FirstName: firstName,
+            Age: age,
+            Address: address,
+            City: city,
+            PostalCode: postalCode,
+        };
+
+        createAccount(completeAccountInfo);
     };
+
 
     // Apply non-scrollable styles to the body element
     useEffect(() => {
