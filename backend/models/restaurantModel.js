@@ -1,23 +1,30 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const imageSchema = new mongoose.Schema({
+  base64: String,
+  mime: String,
+});
+
+const itemsSchema = new mongoose.Schema({
+
+  name: String,
+  description: String,
+  price: Number,
+  image: imageSchema,
+});
+
 const productSchema = new mongoose.Schema({
   name: String,
-  desc: String,
-  price: Number,
-  mime: String,
-  image: String,
-  categories: String,
-  discount: Number,
+  items: [itemsSchema]
 });
 
 const restaurantSchema = new mongoose.Schema({
   displayType: String,
   name: String,
-  desc: String,
-  mime: String,
-  image: String,
-  priceRange: String,
+  description: String,
+  cardImage: imageSchema,
+  restaurantImage: imageSchema,
   deliveryFee: String,
   distance: Number,
   deliveryTime: String,

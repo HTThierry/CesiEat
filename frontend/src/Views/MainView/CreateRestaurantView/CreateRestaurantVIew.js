@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./CreateRestaurantVIew.css";
 import {RxCross2} from "react-icons/rx";
+import axios from 'axios';
 
 const defaultImage = {
     mime: 'image/png',
@@ -210,6 +211,17 @@ function CreateRestaurantView() {
         }
     };
 
+
+    const requestPostRestaurant = async (value) => {
+        try {
+            const response = await axios.post('http://localhost:3000/api/v1/restaurants', value);
+            console.log('Data sent successfully:', response.data);
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
+    };
+    
+
     const onSave = () => {
         const newCategories =  categories.filter(category => {
             const hasNonEmptyItems = category.items.some(item =>
@@ -224,7 +236,29 @@ function CreateRestaurantView() {
                 )
             };
         });
-
+        
+        const sendRestaurantData = {
+            displayType: "grid",
+            name: restaurantInfo.title,
+            description: restaurantInfo.description,
+            restaurantImage: {
+                mime: restaurantInfo.image.mime,
+                base64: restaurantInfo.image.base64
+            },
+            cardImage: {
+                mime: "",
+                base64: ""
+            },
+            deliveryFee: "1.99€",
+            distance: 1.5,
+            deliveryTime: "20 min",
+            rating: 4.2,
+            promotions: "20% de réduction sur votre première commande",
+            product: newCategories
+        };
+        // console.log('===>', sendRestaurantData);
+        // console.log('===>', sendRestaurantData);
+        requestPostRestaurant(sendRestaurantData);
     }
 
     return (
@@ -318,9 +352,9 @@ function CreateRestaurantView() {
                             </div>
                         </div>
                     ))}
-                    <button className="save-button" onClick={() => onSave()}>Sauvegarder
+                    <button className="save-button" onClick={onSave}>Sauvegarder
                     </button>
-                </div>
+                </div>cc
             </div>
             <div className="backgroundRight"></div>
 
