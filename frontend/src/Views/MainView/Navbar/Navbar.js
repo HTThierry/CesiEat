@@ -7,6 +7,7 @@ import { IconContext } from 'react-icons';
 import defaultProfilePic from "../../../Images/default.jpeg";
 
 function Navbar() {
+    const userType = "Restaurateur"
     const [profilePic] = useState(defaultProfilePic);
     const [sidebar, setSidebar] = useState(false);
 
@@ -14,6 +15,9 @@ function Navbar() {
 
     const closeSidebar = () => setSidebar(false);
 
+    const filteredNavbarData = NavbarData.filter(item =>
+        item.allowedUserTypes.includes(userType) || item.allowedUserTypes.includes('All')
+    );
 
     return (
         <div className="navBar">
@@ -33,7 +37,7 @@ function Navbar() {
                                 <Link to="/profile/information" className="manage-account-button">Gérer le compte</Link>
                             </div>
                         </div>
-                        {NavbarData.map((item, index) => {
+                        {filteredNavbarData.map((item, index) => {
                             return (
                                 <div key={index} className={item.cName}>
                                 <NavLink to={item.path} onClick={closeSidebar}>

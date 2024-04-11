@@ -10,8 +10,12 @@ const MainLayout = () => {
     const [isDeleteOpen, setDeleteOpen] = useState(false);
     const [isLogOutOpen, setLogOutOpen] = useState(false);
 
-    const handleDeleteAccount = () => {
+    const handleDeleteAccountOpen = () => {
         setDeleteOpen(true);
+    };
+
+    const handleLogOutOpen = () => {
+        setLogOutOpen(true);
     };
 
     const handleClose = () => {
@@ -19,15 +23,18 @@ const MainLayout = () => {
         setLogOutOpen(false);
     };
 
-    const handleLogOut = () => {
-        setLogOutOpen(true);
+    const handleDeleteAccount = () => {
     };
+
+    const handleLogOut = () => {
+    };
+
 
     return (
         <div className="mainLayout CesiEatsMedium">
             <BlackHeader />
             <div className="main-content">
-                <Sidebar onDeleteAccount={handleDeleteAccount} onLogOut={ handleLogOut}/>
+                <Sidebar onDeleteAccount={handleDeleteAccountOpen} onLogOut={ handleLogOutOpen}/>
                 <PopUp text={"Voulez-vous vraiment supprimer votre compte ?"} isOpen={isDeleteOpen} onConfirm={handleDeleteAccount} onCancel={handleClose}/>
                 <PopUp text={"Voulez-vous vraiment vous déconnecter ?"} isOpen={isLogOutOpen} onConfirm={handleLogOut} onCancel={handleClose}/>
                 <style>{'body { background-color: rgba(250 , 146 , 105); }'}</style>
