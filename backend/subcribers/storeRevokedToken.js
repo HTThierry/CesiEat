@@ -12,10 +12,10 @@ function getExpiryDateFromToken(token) {
 
 
 async function storeRevokedToken(token) {
-    const expiry = getExpiryDateFromToken(token);
+    //const expiry = getExpiryDateFromToken(token);
     const sql = "INSERT INTO revoked_tokens (token, expiry) VALUES (?, ?)";
     
-    db.query(sql, [token, expiry], (error, results) => {
+    db.query(sql, [token, expiry=null], (error, results) => {
         if (error) {
             console.error("Error storing revoked token:", error);
             throw error;

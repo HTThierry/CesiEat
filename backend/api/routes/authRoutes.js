@@ -6,7 +6,7 @@ require('dotenv').config({ path: './config/.env' })
 router.post('/login', authController.login);
 
 
-// router.post('/register', authController.register);
+router.post('/authenticate', authController.authenticate);
 
 
 router.post('/refresh-token', authController.refreshToken);

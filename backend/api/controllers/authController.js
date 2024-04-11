@@ -5,6 +5,8 @@ const logger = require('../../config/logger');
 const express = require('express');
 const router = express.Router();
 const storeRevokedToken = require('../../subcribers/storeRevokedToken.js');
+
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -34,6 +36,10 @@ exports.login = async (req, res) => {
     };
 
     res.cookie('refreshToken', refreshToken, cookieOptions);
+    res.cookie('accessToken', accessToken, cookieOptions);
+    //localStorage.setItem('accountToken', accessToken);
+    //window.localStorage.setItem('refreshToken', refreshToken);
+    
     logger.info(`User logged in: ${email}`);
     res.status(200).json({ message: "You are now connected!", accessToken, refreshToken});
   } catch (error) {
@@ -92,18 +98,18 @@ exports.refreshToken = (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    const refreshToken = req.cookies;
+    const refreshToken = req.cookies.accessToken;
     console.log(refreshToken);  
       if (!refreshToken) {
         console.log(refreshToken)
           return res.status(400).json({ message: "Refresh token is required" });
       }
 
-      // Révoquer et stocker le refreshToken
+      
       await storeRevokedToken(refreshToken);
 
-      // Vous pouvez également vouloir effacer le refreshToken du cookie ou du stockage du client
-      res.clearCookie('refreshToken'); // Si le token est stocké dans un cookie
+      
+      res.clearCookie('refreshToken'); 
       res.status(200).json({ message: "Successfully logged out" });
   } catch (error) {
       console.error("Logout Error:", error);
