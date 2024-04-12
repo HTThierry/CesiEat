@@ -14,20 +14,17 @@
     }
 
     .first-row {
-        display: flex;
         margin-bottom: 1rem;
         padding-left: 0;
         padding-right: 0;
-        flex-direction: row;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
     }
 
     .logo {
-        justify-content: flex-start;
         margin-left: 5%;
-        padding-left: 0;
-        padding-right: 0;
-        display: flex;
-        flex-direction: row;
+        padding: 0;
     }
 
     .downloads {
@@ -40,9 +37,9 @@
     }
 
     .download-logo {
-        padding-left: 5%;
         width : 135px;
         height: 40px;
+        padding: 0;
     }
 
     .second-row {
@@ -63,6 +60,9 @@
     .third-row {
         margin-bottom: 1rem;
         margin-top: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
     }
 
     .socials {
@@ -75,12 +75,13 @@
     }
 
     .app-logo {
-        margin-right: 5%;
+        margin-right: 20px;
         width : auto;
         height: 30px;
     }
 
     .conditions {
+        justify-self: flex-end;
         justify-content: flex-end;
         margin-right: 5%;
         padding-left: 0;
@@ -96,6 +97,9 @@
         justify-content: flex-end;
     }
 
+    .captcha {
+        margin-right: 20px;
+    }
     .copy {
         margin-right: 5%;
         padding-left: 0;
@@ -112,7 +116,6 @@
         }
 
         .logo {
-            margin-left: 5%;
             margin-bottom: 3%;
         }
 
@@ -123,7 +126,6 @@
         }
 
         .download-logo {
-            padding-left: 5%;
             width : 110px;
             height: 30px;
         }
@@ -164,6 +166,7 @@
         .last_row {
             display: flex;
             justify-content: flex-start;
+            flex-flow: column;
             margin-left: 5%;
             font-size: 12px;
         }

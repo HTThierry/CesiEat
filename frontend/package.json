@@ -9,7 +9,6 @@
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
     "axios": "^1.6.8",
-    "bootstrap": "latest",
     "dotenv": "^16.4.5",
     "react": "latest",
     "react-bootstrap": "latest",
