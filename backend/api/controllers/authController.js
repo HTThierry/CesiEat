@@ -5,7 +5,12 @@ const logger = require('../../config/logger');
 const express = require('express');
 const router = express.Router();
 const storeRevokedToken = require('../../subcribers/storeRevokedToken.js');
+const cookieParser = require('cookie-parser');
+router.use(cookieParser());
 
+
+const app = express();
+app.use(cookieParser());
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -34,14 +39,20 @@ exports.login = async (req, res) => {
       sameSite: 'Strict',
       expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
     };
+    
 
     res.cookie('refreshToken', refreshToken, cookieOptions);
     res.cookie('accessToken', accessToken, cookieOptions);
+
+    
     //localStorage.setItem('accountToken', accessToken);
     //window.localStorage.setItem('refreshToken', refreshToken);
-    
+
     logger.info(`User logged in: ${email}`);
     res.status(200).json({ message: "You are now connected!", accessToken, refreshToken});
+
+    console.log('Cookies:', req.cookies); 
+
   } catch (error) {
     logger.error(`Login Error: ${error.message}`);
     res.status(500).json({ message: "An error occurred during the login process" });
@@ -98,18 +109,8 @@ exports.refreshToken = (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    const refreshToken = req.cookies.accessToken;
-    console.log(refreshToken);  
-      if (!refreshToken) {
-        console.log(refreshToken)
-          return res.status(400).json({ message: "Refresh token is required" });
-      }
-
-      
-      await storeRevokedToken(refreshToken);
-
-      
-      res.clearCookie('refreshToken'); 
+      res.clearCookie('refreshToken', { path: '/', httpOnly: true, secure: true, sameSite: 'None' });
+      res.clearCookie('accessToken', { path: '/', httpOnly: true, secure: true, sameSite: 'None' });
       res.status(200).json({ message: "Successfully logged out" });
   } catch (error) {
       console.error("Logout Error:", error);
@@ -118,9 +119,10 @@ exports.logout = async (req, res) => {
 };
 
 
+
 router.get('/verify-email/:token', async (req, res) => {
   const user = await User.findOne({
-      emailVerificationToken: req.params.token,
+      emailVerificationToken: req.params.token, 
       emailVerificationTokenExpires: { $gt: Date.now() }
   });
 

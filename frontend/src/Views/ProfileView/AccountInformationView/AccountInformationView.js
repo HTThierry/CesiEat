@@ -19,15 +19,6 @@ const AccountInformationView = () => {
     const [editField, setEditField] = useState(null);
 
     useEffect(() => {
-        fetch('/api/account-info')
-            .then(response => response.json())
-            .then(data => setAccountInfo(data))
-            .catch(error => console.error('Error fetching data: ', error));
-
-        fetch('/api/profile-picture')
-            .then(response => response.json())
-            .then(data => setProfilePic(data.imageUrl))
-            .catch(error => console.error('Error fetching profile picture: ', error));
     }, []);
 
     const handleProfilePicChange = (event) => {

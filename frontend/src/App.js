@@ -37,7 +37,7 @@ const App = () => (
 
                 <Route path="/signin" element={<SignInView />}/>
 
-                <Route path='/' element={<HomeView/>}>
+                <Route path='/' element={<HomeView requiredUserTypes={['Client', 'Restaurateur', 'Livreur']}/>}>
                     <Route index
                            element={<ProtectedRoute requiredUserTypes={['Client', 'Restaurateur', 'Livreur']}>
                                <ProductView />

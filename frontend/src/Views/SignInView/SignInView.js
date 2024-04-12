@@ -16,15 +16,12 @@ const SignInView = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        if (email === password) {
-            setErrorMessage('E-mail ou mot de passe incorrect');
-
-        }
-
         const apiUrl = `${API_URL}/api/${API_VERSION}/auth/login`;
 
         try {
-            const response = await axios.post(apiUrl, { email, password });
+            const response = await axios.post(apiUrl, { email, password }, {
+                withCredentials: true
+            });
             console.log('Login successful:', response.data);
             navigate('/');
 
