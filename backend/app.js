@@ -15,8 +15,9 @@ const front_PORT = process.env.Front_PORT || 3002
 const mongoose = require('mongoose');
 
 app.use(cookieParser());
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' })); 
+app.use(express.urlencoded({  limit: '50mb',extended: true }));
+
 
 
 mongoose.connect(process.env.MONGODB_URI)

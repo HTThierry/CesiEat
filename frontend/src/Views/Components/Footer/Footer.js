@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col } from 'react-bootstrap';
 import apple from "./Images/AppStore.svg";
 import google from "./Images/GooglePlay.webp";
 import facebook from "./Images/Facebook.svg";
@@ -12,26 +11,26 @@ import WhiteLogo from "../Logos/WhiteLogo";
 export default function Footer() {
     return (
         <footer className="HomeFooter ">
-            <Container fluid className="no-padding">
-                <Row className="first-row">
-                    <Col className="logo">
+            <div className="no-padding">
+                <div className="first-row">
+                    <div className="logo no-padding">
                         <WhiteLogo/>
-                    </Col>
-                    <Col className="downloads">
-                        <a href="https://www.google.com" className="">
-                            <img src={apple} alt="apple" className="download-logo"/>
+                    </div>
+                    <div className="downloads no-padding">
+                        <a href="https://www.google.com" className="no-padding">
+                            <img src={apple} alt="apple" className="download-logo no-padding"/>
                         </a>
-                        <a href="https://www.google.com" className="">
-                            <img src={google} alt="google" className="download-logo"/>
+                        <a href="https://www.google.com" className="no-padding">
+                            <img src={google} alt="google" className="download-logo no-padding"/>
                         </a>
-                    </Col>
-                </Row>
-                <Row  className="second-row">
-                    <Col className="white_line"></Col>
-                </Row>
+                    </div>
+                </div>
+                <div  className="second-row">
+                    <div className="white_line"></div>
+                </div>
 
-                <Row className="third-row">
-                    <Col className="socials">
+                <div className="third-row">
+                    <div className="socials">
                         <a href="https://www.facebook.com">
                             <img src={facebook} alt="Facebook" className="app-logo"/>
                         </a>
@@ -41,27 +40,27 @@ export default function Footer() {
                         <a href="https://www.instagram.com">
                             <img src={instagram} alt="Instagram" className="app-logo"/>
                         </a>
-                    </Col>
-                    <Col className="conditions">
+                    </div>
+                    <div className="conditions">
                         <a href="https://www.google.com" className="text-decoration-none text-light mr-7 text">Politique de confidentialité</a>
                         <a href="https://www.google.com" className="text-decoration-none text-light mr-7 text">Conditions</a>
                         <a href="https://www.google.com" className="text-decoration-none text-light mr-7 text">Tarifs</a>
                         <a href="https://www.google.com" className="text-decoration-none text-light text">Ne vendez pas et ne partagez pas mes informations personnelles</a>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
 
-                <Row className="last_row">
-                    <Col className="col-12 col-md-auto no-padding">
+                <div className="last_row">
+                    <div className="captcha no-padding">
                         Ce site est protégé par reCAPTCHA. Par ailleurs, la
                         <a className="text-decoration-none text-light" href="//policies.google.com/privacy"> Politique de confidentialité </a>
                          et les
                         <a  className="text-decoration-none text-light" href="//policies.google.com/terms"> Conditions d'utilisation de Google s'appliquent</a>
-                    </Col>
-                    <Col className="col-12 col-md-auto copy">
-                    <p>&copy; 2024 Cesi Eats Inc.</p>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                    <div className="copy">
+                        <p>&copy; 2024 Cesi Eats Inc.</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 }
