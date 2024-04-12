@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant'
     },
-    desc: String,
+    description: String,
     mime: String,
     image: String,
     categories: String,

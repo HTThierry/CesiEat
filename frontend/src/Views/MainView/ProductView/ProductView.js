@@ -33,17 +33,19 @@ const ProductView = () => {
     const fetchRestaurants = () => {
         axios.get('http://localhost:3000/api/v1/restaurants')
             .then(response => {
+
                 // Organiser les données par type
                 const newData = restaurantData.map(section => ({
                     ...section,
                     items: [
                         ...section.items,
                         ...response.data.filter(restaurant => restaurant.displayType === section.displayType).map((restaurant, index) => ({
+                            id: restaurant._id,
                             name: restaurant.name,
-                            image: restaurant.image,
+                            mime: restaurant.cardImage.mime,
+                            image: restaurant.cardImage.base64,
                             rating: restaurant.rating,
                             cuisine: restaurant.cuisine,
-                            priceRange: restaurant.priceRange,
                             distance: restaurant.distance,
                             deliveryTime: restaurant.deliveryTime,
                             deliveryFee: restaurant.deliveryFee,
@@ -51,7 +53,6 @@ const ProductView = () => {
                         }))
                     ]
                 }));
-
                 setRestaurantData(newData);
             })
             .catch(error => {

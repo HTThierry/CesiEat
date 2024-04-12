@@ -208,7 +208,7 @@ const CreateMenuInfo = forwardRef(({ data, defaultImage, onDataChange }, ref) =>
                                         onChange={(e) => handleItemChange(e, catIndex, itemIndex, 'name')}
                                     />
                                     <input
-                                        type="double"
+                                        type="number"
                                         placeholder="Price"
                                         className="item-price"
                                         value={item.price}
