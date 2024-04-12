@@ -14,19 +14,24 @@ function getCookie(name) {
 
 
 const isAuthenticated = (requiredUserTypes) => {
-    const token = getCookie('accessToken'); 
-    console.log(token); 
+    const token = getCookie('accessToken');
+    console.log(token);
     if (!token) return false;
 
     try {
         const decoded = jwtDecode(token);
-        return requiredUserTypes && requiredUserTypes.includes(decoded.accountType);
+        console.log(decoded);
+
+        const isAtLeastOneUserTypeEnabled = () => {
+            return requiredUserTypes.some(type => decoded.accountType[type]);
+        };
+
+        return isAtLeastOneUserTypeEnabled();
     } catch (error) {
         console.error('Error decoding token', error);
         return false;
     }
 };
-
 
 
 // Protected Route Component
