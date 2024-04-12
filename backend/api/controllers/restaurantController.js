@@ -18,29 +18,26 @@ exports.getAllRestaurants = async (req, res) => {
 exports.createRestaurant = async (req, res) => {
   
   try {
-    // const newRestaurant = new Restaurant({
-    //   displayType: req.body.displayType,
-    //   name: req.body.name,
-    //   desc: req.body.desc,
-    //   mime: req.body.mime,
-    //   image: req.body.image,
-    //   deliveryFee: req.body.deliveryFee,
-    //   distance: req.body.distance,
-    //   deliveryTime: req.body.deliveryTime,
-    //   rating: req.body.rating,
-    //   promotions: req.body.promotions,
-    //   product: req.body.product  
-    // });
-    // const savedRestaurant = await newRestaurant.save();
-    // res.status(201).json(savedRestaurant);
-
     const newRestaurants = await Restaurant.insertMany(req.body);
     res.status(201).json(newRestaurants);
-
-
     
   } catch (error) {
     logger.error(`Create Restaurant Error: ${error.message}`, { endpoint: 'createRestaurant', method: 'POST' });
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+// Get a single restaurant by ID
+exports.getRestaurantById = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findById(req.params.id);
+    if (!restaurant) {
+      return res.status(404).json({ message: 'Restaurant not found' });
+    }
+    res.json(restaurant);
+  } catch (error) {
+    logger.error(`Get Restaurant By ID Error: ${error.message}`, { endpoint: 'getRestaurantById', method: 'GET' });
     res.status(500).json({ message: error.message });
   }
 };

@@ -3,6 +3,8 @@ import "./CreateRestaurantVIew.css";
 import CreateRestaurantInfo from "./Components/CreateRestaurantInfo/CreateRestaurantInfo";
 import CreateMenuInfo from "./Components/CreateMenuInfo/CreateMenuInfo";
 import CreateCardInfo from "./Components/CreateCardInfo/CreateCardInfo";
+import {useLocation, useNavigate} from "react-router-dom";
+
 import axios from 'axios';
 
 const defaultImage = {
@@ -11,6 +13,7 @@ const defaultImage = {
 }
 
 function CreateRestaurantView() {
+    const navigate = useNavigate();
     const childRef1 = useRef();
     const childRef2 = useRef();
     const childRef3 = useRef();
@@ -115,8 +118,11 @@ function CreateRestaurantView() {
         try {
             const response = await axios.post('http://localhost:3000/api/v1/restaurants', value);
             console.log('Data sent successfully:', response.data);
+            navigate('/');
+            return(true)
         } catch (error) {
             console.error('Error sending data:', error);
+            return false
         }
     };
     const onSave = () => {
@@ -124,8 +130,9 @@ function CreateRestaurantView() {
         childRef2.current.updateData();
         childRef3.current.updateData();
 
-        // console.log(info)
-        requestPostRestaurant(info);
+        if(requestPostRestaurant(info)){
+            navigate('/');
+        }
 
 
     };

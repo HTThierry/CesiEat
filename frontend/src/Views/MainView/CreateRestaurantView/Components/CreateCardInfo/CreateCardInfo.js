@@ -86,7 +86,7 @@ const CardInfo = forwardRef(({ data, onDataChange }, ref) => {
                         </div>
                         <div className="restaurant-meta">
                             <input
-                                type="text"
+                                type="number"
                                 placeholder="deliveryFee"
                                 name="deliveryFee"
                                 className="restaurant-delivery-fee"
@@ -94,7 +94,7 @@ const CardInfo = forwardRef(({ data, onDataChange }, ref) => {
                                 onChange={handleCardInfoChange}
                             />
                             <input
-                                type="text"
+                                type="number"
                                 placeholder="deliveryTime"
                                 name="deliveryTime"
                                 className="restaurant-delivery-time"
