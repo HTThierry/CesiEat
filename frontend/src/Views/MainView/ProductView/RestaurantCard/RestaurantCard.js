@@ -18,7 +18,7 @@ function RestaurantCard({ details }) {
                         <div className="restaurant-rating">{details.rating}</div>
                     </div>
                     <div className="restaurant-meta">
-                        <span className="restaurant-delivery-info">Frais de livraison : {details.deliveryFee} $</span>
+                        <span className="restaurant-delivery-info">Frais de livraison : {details.deliveryFee} €</span>
                         <span className="restaurant-delivery-time">{details.deliveryTime} min</span>
                     </div>
                 </div>

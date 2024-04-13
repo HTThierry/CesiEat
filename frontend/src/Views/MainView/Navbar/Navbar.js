@@ -5,6 +5,7 @@ import {Link, NavLink} from 'react-router-dom';
 import { NavbarData } from './NavbarData';
 import { IconContext } from 'react-icons';
 import defaultProfilePic from "../../../Images/default.jpeg";
+import isAuthenticated from "../../../isAuthenthicated";
 
 function Navbar() {
     const userType = "Restaurateur"
@@ -16,7 +17,7 @@ function Navbar() {
     const closeSidebar = () => setSidebar(false);
 
     const filteredNavbarData = NavbarData.filter(item =>
-        item.allowedUserTypes.includes(userType) || item.allowedUserTypes.includes('All')
+        isAuthenticated(item.allowedUserTypes) || item.allowedUserTypes.includes('All')
     );
 
     return (

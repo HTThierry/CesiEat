@@ -117,7 +117,7 @@ const CardInfo = forwardRef(({ data, onDataChange }, ref) => {
                             <div className="restaurant-rating">{5}</div>
                         </div>
                         <div className="restaurant-meta">
-                            <span className="restaurant-delivery-fee">Frais de livraison : {cardInfo.deliveryFee} $</span>
+                            <span className="restaurant-delivery-fee">Frais de livraison : {cardInfo.deliveryFee} €</span>
                             <span className="restaurant-delivery-time">{cardInfo.deliveryTime} min</span>
                         </div>
                     </div>
